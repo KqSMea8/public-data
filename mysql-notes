@@ -1,11 +1,17 @@
 实践规划：
-1.每日sql语句执行情况
-有哪些sql，只有参数不一样的归为一类，执行次数，平均执行时长，最高执行时长，
-读写sql区分开统计
-跨机房对性能延迟的影响分析？ 记录client-ip，分别统计？
-业务高峰期？
+1.sql语句性能调优 
+* 每日sql语句执行情况，有哪些sql，只有参数不一样的归为一类
+* 读写sql区分开统计
+* 执行次数，平均执行时长，最高执行时长
+* 业务高峰期？
+* 跨机房对性能延迟的影响分析？ 记录client-ip，分别统计？
+* mysql 主、从 query log ？
+* 扩展：redis性能，每个接口的性能？http形式的，hook形式的
+
 
 高性能mysql 第3版
+
+第一章 mysql架构与历史
 查询处理(query processing)、其他任务(server task) 和 数据的存储提取分离。
 mysql服务器逻辑架构图 
 不同存储引擎之间是否会通信?
@@ -54,7 +60,7 @@ myisam 崩溃后无法安全恢复
 使用innodb的优点总结
 分片？
 
-基准测试
+第2章 MySQL基准测试
 集成式full-stack，单组件式single-component
 
 测试指标，
@@ -85,9 +91,47 @@ show full processlist
 * mysqlslap,
 * Mysql Benchmark Suite sql-bench, 提供一些sample，cpu密集型的，缺点单线程，需要perl,dbd支持
 * Super smack，复杂强大
-* Database Test Suite  osdldbt
-* Percona's TPCC-MySQL Tool
-* sysbench
+* Database Test Suite  osdldbt dbt2 
+* Percona's TPCC-MySQL Tool  tpcc_load 
+* sysbench，最有用 oltp,fileio 
+
+TPC-C 测试
+
+内置的benchmark()函数
+
+RAID？
+
+第3章 服务器性能剖析 profiling
+ddl , dml 
+执行时间和等待时间
+percona tookit pt-query-digest  mk-query-digest 
+等待，任务在什么地方被阻塞？
+Performance Schema ,percona server 
+优化成本大于收益
+丢失时间，任务总时间和实际测量到的时间
+New Relic 
+
+测量php应用程序
+* xhpprof,
+* xdebug,
+* Valgrind
+* cachegrind
+* Ifp instrumentation-for-php,更关注数据库的调用 
+* MySQL Enterprise Monitor 
+
+剖析MySQL查询
+* 慢查询日志  
+long_query_time，针对每个连接设置？
+日志轮转(log rotation)工具
+* 通用日志 
+* show full processlist
+* tcpdump
+
+分片(shard)的表?
+
+
+
+
 
 
 
