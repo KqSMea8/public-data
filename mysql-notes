@@ -1,5 +1,6 @@
 实践规划：
 1.sql语句性能调优 
+* 关注慢查询邮件
 * 每日sql语句执行情况，有哪些sql，只有参数不一样的归为一类
 * 读写sql区分开统计
 * 执行次数，平均执行时长，最高执行时长
@@ -7,7 +8,48 @@
 * 跨机房对性能延迟的影响分析？ 记录client-ip，分别统计？
 * mysql 主、从 query log ？
 * 扩展：redis性能，每个接口的性能？http形式的，hook形式的
+* 已有的性能监控工具？
+内存、cpu等使用量占比
 
+2.mysql性能指标
+cpu,磁盘，内存，网络io，mysql
+* CPU_IDLE
+* CPU_WAIT_IO
+* 磁盘分区最大使用率
+* DISK_TOTAL_WRITE_KB (磁盘-写)
+* DISK_TOTAL_READ_KB (磁盘-读)
+* 内存使用率
+* com_reads（读流量）
+* com_writes（写流量）
+* seconds_behind_master（主从延迟）
+* threads_connected（连接数）
+* threads_running（执行线程数）
+* trx_max_active_time（最大事务时间）
+* slow_queries_pt（慢查询）
+* NET_TOTAL_IN_BITPS（整机网卡总接收比特率）
+* NET_TOTAL_OUT_BITPS（整机网卡总发送比特率）
+
+每个指标shell实现？指标意义
+show status 
+show processlist
+show innodb status 
+
+oprofile,strace,tcpdump 
+GDB堆栈跟踪 gdb附加到mysqld进程中？
+pt-pmp,pt-collect 
+
+服务器和存储引擎之间的接口协议，谁兼容谁？
+底层接口只有几十个？
+
+日期函数、视图、触发器 - 服务器完成 
+增量、逐步返回
+
+无法做到并行执行查询？
+
+左侧深度优先，平衡树
+explain每个字段的含义？
+
+3. 性能相关的工具
 
 高性能mysql 第3版
 
@@ -127,15 +169,148 @@ long_query_time，针对每个连接设置？
 * show full processlist
 * tcpdump
 
+show status 
+show profile 
+
+information_schema
+
 分片(shard)的表?
 
+诊断间歇性问题
+
+mysql 性能调优工具
+show global status ,
+show processlist 
+innotop
+
+触发器，
+误报-false positive ，漏检false negative 
+线程异常，threads_running,
 
 
+运维常见问题
+1. 高峰时段连接被断开，mysql服务器重启
+2. mysql突然遭遇大量查询，缓存失败？
+
+ps输出？
+
+索引使用次数 ？ 
+
+strace 调查系统的使用情况?
 
 
+smp架构？
+
+foat decimal 的差别？计算中decimal 转成double?
+double计算浮点数，
+
+enum, 使用枚举值，坏处？ 内部整数排序
+
+最小粒度，秒，但可以微秒级的运算
+
+bit,set等，字符串存储
+影子表
+物化视图,flexviews
+计数器表，多行，随机写某行，sum
+全部索引列的hash值
+hash索引无法用于按值排序
+自适应hash索引
+mysql优化器？
+
+crc32 冲突？
+
+myisam 空间、地理位置索引
+元数据信息表
+表达式、函数不能用索引
+索引的选择性，不重复列数/全记录数，越高查询效率越高
+left()
+前缀索引
+
+select sum(f=2),sum(f2=2) from tablename
+
+聚簇索引，一个表只能有一个聚簇索引
+节点页，叶子页，减少磁盘io
+
+代理键，自增列，
+
+只能是b-tree 做为覆盖索引
+
+左前缀匹配，like
+延迟关联？
+
+join, order by 第一个
+
+select ... for update 
+set autocommit=0;
+一级索引排他锁，二级索引共享锁
+sex in (f,m) ?
+
+sql-语句，剔除value，只剩sql template 
+5.4 索引案例学习
+范围条件> = < 等，无法使用后面的索引，使用in则不同
+
+延迟关联，覆盖索引
+
+维护 
+check repair table 
+1. 损坏的表
+2. 索引统计信息
+3. 减少碎片 b-tree 
+
+碎片
+1.行
+2. 行间
+3. 剩余空间
+
+不做任何操作的alter  
+myisamchk
+
+rsync备份导致innodb表错误？
+
+存储引擎索引值的分布信息
+record_in_range()
+info()
+analyze table 重新生成统计信息
+show index from table 索引基数
+
+优化器做哪些优化工作？
+show table status show index 会触发索引统计信息更新，锁表
+
+慢查询
+1.返回不需要的记录，行、列
+2.扫描额外的记录
+
+快速上限估计
+
+explain type：
+全表扫描
+索引扫描
+范围扫描
+唯一索引
+常数引用
+
+三种方式应用where
+1. 存储引擎，索引中
+2. 索引覆盖扫描 服务器完成，但无需再返回表查询记录
+3. 服务器，再表查
+
+flume+kafuka+es ?
+
+delete， 大变小 
+
+分解关联查询
+
+通讯协议，半双工
+
+in 和 or的 区别？
 
 
+using() join ?
 
+等值条件，范围条件
+松散索引？
+
+分区表？跟存储引擎无关？
 
 
 
