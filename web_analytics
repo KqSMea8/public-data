@@ -1,5 +1,35 @@
  
-Google Urchin
+
+
+业务背景&技术实现
+
+指标：metrics
+* ip
+* hit 
+* pv
+* visits 访问量 基于一个session 
+启动session的时间算？
+* vistors 访客
+绝对唯一独立访客
+* 停留时间
+网页停留时间 & 网站停留时间
+* 跳出率
+单个页面访问与所有会话的占比
+整体跳出率
+热门落地页的跳出率
+反向链接的跳出率
+搜索关键词的跳出率
+新老访客的跳出率，新老的计算逻辑？
+* 退出率 
+在某个页面有多少访客退出网站
+* 转化率
+分母是visits or visitor？
+* 参与度
+
+列表页的每项的点击率？
+
+
+分析是为了指导行动
 
 收集数据的三种方式
 1.js
@@ -21,6 +51,8 @@ Google Urchin
 * Google Analytics 
 * Yahoo! Web Analytics （已挂）
 
+Google Urchin （已挂）
+
 http://www.adsem.cn/503
 
 评估供应商的10个问题
@@ -28,5 +60,18 @@ http://www.adsem.cn/503
 数据抽样？
 
 细分的维度
+
+反向链接的变化趋势
+
+第三方cookie？
+
+开源工具？
+http://piwik.org/
+http://www.openwebanalytics.com/
+
+出站链接
+
+Google Web Optimizer 
+Google Insights for search
 
 
