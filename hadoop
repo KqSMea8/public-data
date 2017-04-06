@@ -1,0 +1,25 @@
+hadoop实践
+1. 了解公司的hadoop平台，申请开通资源权限；
+2. 安装hadoop的client端环境；
+3. 运行hadoop权威指南示例，java\python\c++；
+需要看一些java入门的书籍？
+4. count,sum,sort,avg,std等一系列统计学；
+5. github上找一些hadoop mapreduce 的sample程序
+https://github.com/tomwhite/hadoop-book/
+
+
+
+
+
+hadoop相关的java类？
+
+
+hdfs，节点故障问题
+数据完整性 checksum
+ECC内存？
+crc-32 循环冗余校验
+
+架构图？
+
+hadoop权威指南 第二版
+基于streaming的python与java比，性能如何？ unix标准流？
