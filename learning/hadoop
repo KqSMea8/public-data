@@ -1,11 +1,33 @@
-学java的目的是为了写hadoop的mapreduce程序
+一、了解原理
+1. 基本架构，组件
+2. 输入、计算、输出
 
-使用Eclipse开发java
-http://www.cnblogs.com/yisheng163/p/4501761.html
+二、实践
+1. 安装配置hadoop
+2. 搭建java，pyhton等相关的开发环境
+    使用python完成一个hadoop的mapreduce？    
+3. 下载示例代码，试运行
+
+三、应用场景
+1. count,sum,max,min,去重,排序
+2. avg，标准差
+
+
 
 hadoop学习之二:mac下hadoop+eclipse环境搭建
 http://blog.csdn.net/Ruidu_Doer/article/details/50781144
 
-java语法？
+hdfs的一般性操作
+hdfs的原理，如何保证节点损坏后可用
 
-mvn？
+
+job - task 
+
+job调度
+1. fifo
+2. fair scheduler , task 槽的数量，支持【抢占】
+
+
+shuffle
+
+环形内存缓冲池
