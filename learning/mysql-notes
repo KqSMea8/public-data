@@ -29,6 +29,10 @@ cpu,磁盘，内存，网络io，mysql
 * NET_TOTAL_IN_BITPS（整机网卡总接收比特率）
 * NET_TOTAL_OUT_BITPS（整机网卡总发送比特率）
 
+mysql 更新密码
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpass_is_nopass.x');
+
+
 每个指标shell实现？指标意义
 show status 
 show processlist
