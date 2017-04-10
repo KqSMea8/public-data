@@ -1,19 +1,23 @@
 一、了解原理
-1. 输入、计算、输出模型
-    数据存储：单个磁盘 -> 磁盘阵列
+0. 应用场景
+1. 大数据背景下，【输入>计算>输出】模型遇到的挑战
     计算方式：串行 -> 并行
-2. map & reduce
+    数据存储：单个磁盘 -> 磁盘阵列    
+2. map & reduce 
+    一般流程： input > splitting > mapping > shuffling > reducing > combine? > 输出
+    http://blog.jobbole.com/84089/
+    基本架构，组件 
 3. hdfs
     文件操作:增删改查等等
-    shell &  java api
-4. 基本架构，组件 
-5. 一般流程
-    数据分片、map、reduce
-6. 各种异常
+    shell &  java api 
+    namenode,datanode
+4. 各种异常
     5.1 存储： 节点故障
-    5.2 计算： 各种环节的失败
+    5.2 计算： 各种环节的问题以及对策
 
 二、实践
+官方文档：http://hadoop.apache.org/docs/current/index.html
+
 1. 安装配置hadoop
 2. 搭建java+hadoop的开发环境
     hadoop学习之二:mac下hadoop+eclipse环境搭建
@@ -22,16 +26,35 @@
     基于python的mapreduce开发流程
     http://blog.csdn.net/susser43/article/details/41518831   
 4. 下载更多示例代码，试运行
-    count,sum,max,min,去重,排序,avg,标准差等
+    count,sum,max,min,去重,avg,标准差等
+    排序？
+    简单的跑以下sample code, 主要还是放在pig和hive上？
 5. 基于hadoop的算法、机器学习等
+    《Hadoop应用架构》
     《数据算法:Hadoop/Spark大数据处理技巧》
 
 三、思考
 1. 很多人并不了解mysql的各种细节，初级能力建表、sql查询等，hadoop教材应该也遵循这个规则，先初级实践，再更深层次的？
+2. docker + hadoop ?
+3. hadoop or spark ?
+4. 知识图谱，实体+关系的存储？
+5. 书籍提供了系统的框架性的学习指导，遇到某些细节书上讲解的不清楚时，再利用搜索引擎找相关文章阅读
+6. 不用一行代码介绍mapreduce?
+7. 网络拓扑结构？
+8. hdfs 图存储
+9. hbase 知识图谱存储？
 
-
-hdfs的一般性操作
-hdfs的原理，如何保证节点损坏后可用
+四、随笔
+分区数=作业的Reducer数？
+按大小分片，按行处理，某行跨文件块
+数据采样？
+join 关联
+先上传数据，再打包上传mr 程序？
+RAID是英文Redundant Array of Independent Disks的缩写,翻译成中文意思是“独立磁盘冗余阵列”,有时也简称磁盘阵列(Disk Array)
+nfs?
+hdfs mapreduce独立安装？ namenode 运行hdfs控制脚本,jobtracker运行map reduce脚本
+日志目录独立
+ssh的系统知识？
 
 
 job - task 
