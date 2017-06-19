@@ -1,0 +1,39 @@
+ros
+
+《机器人系统设计与制作:Python语言实现》 好多技术选型比较另类
+
+I - 计算 - O
+
+Gazebo
+OpenCV
+OpenNI，手势、身体活动、表情
+PCL
+LibreCAD
+Blender
+
+rviz,3D可视化
+rxplot 
+
+
+算法：
+A*搜索算法
+SLAM
+
+Dynamixel
+
+
+正交编码器， 光电型，霍尔型
+惯性测量单元IMU
+
+菊花链，
+
+自带编码器的电机？
+
+
+wiring ?
+
+nuc intel , 类似 RaspberryPi
+TivaC 类似ardunio
+energia Ide, 类似Ardunio IDE
+
+AIML
