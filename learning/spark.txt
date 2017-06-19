@@ -45,9 +45,26 @@ Parquet
 
 二、实践
 1. 下载安装
+http://spark.apache.org/
+
 2. 配置
+export SPARK_HOME=/Users/gaotianpu/Bigdata/spark-2.1.1-bin-hadoop2.7
+export PATH=$PATH:$SPARK_HOME/bin
+export PATH=$PATH:$SPARK_HOME/sbin
+
+#配置ipython？
+set IPYTHON=1 #不生效？
+
+#命令行
+spark-shell #scala
+pyspark  #python 
+#sparkR?
+
+
 17/04/17 10:43:54 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... 
 using builtin-java classes where applicable
+
+17/06/19 13:17:39 WARN ObjectStore: Failed to get database global_temp, returning NoSuchObjectException
 
 17/04/17 10:43:54 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(gaotianpu); groups with view permissions: Set(); users  with modify permissions: Set(gaotianpu); groups with modify permissions: Set()
 
