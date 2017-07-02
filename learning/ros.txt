@@ -1,4 +1,17 @@
-ros
+机器人工具箱
+Arduino
+    https://www.arduino.cc/
+ROS
+    http://www.ros.org/
+LibreCAD  #2D
+    http://librecad.org/cms/home.html
+Blender #3D
+    https://www.blender.org/
+MeshLib #网格线
+    https://github.com/mohammadul/meshlib
+
+
+
 
 《机器人系统设计与制作:Python语言实现》 好多技术选型比较另类
 
@@ -8,8 +21,7 @@ Gazebo
 OpenCV
 OpenNI，手势、身体活动、表情
 PCL
-LibreCAD
-Blender
+
 
 rviz,3D可视化
 rxplot 
@@ -37,3 +49,7 @@ TivaC 类似ardunio
 energia Ide, 类似Ardunio IDE
 
 AIML
+
+MAC 安装ROS？
+http://wiki.ros.org/lunar/Installation
+http://wiki.ros.org/kinetic/Installation/OSX/Homebrew/Source
