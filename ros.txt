@@ -5,6 +5,37 @@ ros
 http://blog.sina.com.cn/s/articlelist_1712413141_7_1.html
 图书：《ROS机器人程序设计（原书第2版）》
 
+机器人工具箱
+Arduino
+    https://www.arduino.cc/
+ROS
+    http://www.ros.org/
+LibreCAD  #2D
+    http://librecad.org/cms/home.html
+Blender #3D
+    https://www.blender.org/
+MeshLib #网格线
+    https://github.com/mohammadul/meshlib
+
+MAC 安装ROS？
+http://wiki.ros.org/lunar/Installation
+http://wiki.ros.org/kinetic/Installation/OSX/Homebrew/Source
+
+http://blog.csdn.net/DinnerHowe/article/details/64121955
+
+Uninstalling six-1.4.1:
+mac本身带的Python库是有问题的，重新安装下python，再安装就行了
+
+rosdep install --from-paths src --ignore-src --rosdistro kinetic -y
+
+ERROR: the following packages/stacks could not have their rosdep keys resolved to system dependencies:
+webkit_dependency: No definition of [python-qt5-bindings-webkit] for OS [osx]
+https://github.com/ros/rosdistro/issues/15117
+
+/Users/gaotianpu/.ros/rosdep/sources.cache
+
+
+
 ROS是一种分布式处理框架（又名Nodes）。这使可执行文件能被单独设计，并且在运行时松散耦合。这些过程可以封装到数据包（Packages）和堆栈（Stacks）中，以便于共享和分发。
 支持代码库的联合系统
 基于服务的同步RPC（远程过程调用）通讯、基于Topic的异步数据流通讯，本身并没有实时性。
