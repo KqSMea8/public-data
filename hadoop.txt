@@ -25,7 +25,10 @@
 扩展
 YARN的工作机制
 
-crc-32
+
+
+新产生的文件，需要和原来的合并？
+文件按大小拆分，处理时，通常按行？
 
 
 
@@ -44,6 +47,8 @@ file:///Users/gaotianpu/BigData/hadoop-2.8.0/share/doc/hadoop/index.html
     source /Users/gaotianpu/.bash_profile  #立即生效  http://elf8848.iteye.com/blog/1582137
      # #不能执行*.sh, 环境变量？
 
+    Hadoop伪分布式配置？
+    http://blog.csdn.net/lcj369387335/article/details/45046167
     配置文件目录：etc/hadoop/
     etc/hadoop/core-site.xml
     etc/hadoop/hdfs-site.xml
@@ -144,3 +149,32 @@ job调度
 shuffle
 
 环形内存缓冲池
+
+#etc/hadoop/hdfs-site.xml
+<property>  
+        <name>dfs.replication</name>  
+        <value>1</value>  
+    </property>  
+    <property>  
+        <name>dfs.namenode.name.dir</name>  
+        <value>/Users/gaotianpu/Bigdata/dfs/name</value>  
+    </property>  
+    <property>  
+        <name>dfs.datannode.data.dir</name>  
+        <value>/Users/gaotianpu/Bigdata/dfs/data</value>  
+    </property> 
+
+
+#etc/hadoop/mapred-site.xml
+ <property>  
+        <name>fs.default.name</name>  
+        <value>hdfs://localhost:9000</value>  
+    </property>  
+    <property>  
+        <name>mapred.job.tracker</name>  
+        <value>hdfs://localhost:9001</value>  
+    </property>  
+    <property>  
+        <name>dfs.replication</name>  
+        <value>1</value>  
+    </property>   

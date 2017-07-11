@@ -17,6 +17,9 @@ Blender #3D
 MeshLib #网格线
     https://github.com/mohammadul/meshlib
 
+CAD?
+https://www.oschina.net/project/tag/241/cad
+
 MAC 安装ROS？
 http://wiki.ros.org/lunar/Installation
 http://wiki.ros.org/kinetic/Installation/OSX/Homebrew/Source
