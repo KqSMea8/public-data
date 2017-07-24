@@ -1,5 +1,10 @@
 python
 
+Mac系统下安装ipython分别支持python2和python3
+http://www.cnblogs.com/wangchaowei/p/6921191.html
+
+brew install mysql numpy scipy matplotlib 
+
 pip
 https://bootstrap.pypa.io/get-pip.py
 
@@ -22,5 +27,5 @@ Traceback (most recent call last):
 ImportError: No module named extern
 
 
-brew install mysql
-sudo pip install mysql-python
+
+sudo pip install mysql-python pandas
