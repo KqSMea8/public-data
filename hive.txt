@@ -1,0 +1,51 @@
+hive
+1. 下载安装
+http://hive.apache.org
+
+2. 配置
+http://nekomiao.me/2016/10/11/mac-install-hive/
+
+cp ./hive-default.xml.template ./hive-default.xml
+touch hive-site.xml
+
+cp hive-log4j.properties.template hive-log4j.properties
+cp hive-env.sh.template hive-env.sh
+
+https://codetosurvive1.github.io/posts/install-hive-basic.html
+
+HADOOP_HOME=/Users/gaotianpu/Bigdata/hadoop-2.8.0/bin/hadoop
+export HIVE_CONF_DIR=/Users/gaotianpu/Bigdata/apache-hive-2.1.1-bin/conf
+
+
+
+http://www.qinbin.me/mac-osx%E5%AE%89%E8%A3%85apache-hive/
+
+
+/Users/gaotianpu/BigData/apache-hive-2.1.1-bin
+
+HiveQL -> map/reduce作业
+糟糕的查询语句会导致执行效率降低
+
+客户端输入sql - map/reduce作业->集群 - 返回结果
+
+hadoop fs -mkdir /tmp
+hadoop fs -chmod g+w /tmp
+
+1. 定义表schema
+2. 导入
+3. 执行HiveQL查询
+
+MetaStore
+
+Exception in thread "main" java.lang.RuntimeException: org.apache.hadoop.hive.ql.metadata.HiveException: java.lang.RuntimeException: Unable to instantiate org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient
+
+分区
+桶，还不好理解
+列存储，不好理解
+
+多表插入，一次读取，多处写入
+
+metastore?
+thrift 
+
+元数据的存储？

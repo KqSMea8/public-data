@@ -68,6 +68,11 @@ using builtin-java classes where applicable
 
 17/04/17 10:43:54 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(gaotianpu); groups with view permissions: Set(); users  with modify permissions: Set(gaotianpu); groups with modify permissions: Set()
 
+3. Spark-SQL
+spark-sql shell ?
+jdbc?
+beeline?
+
 3. 运行samples
 
 

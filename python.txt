@@ -1,0 +1,31 @@
+python
+
+Mac系统下安装ipython分别支持python2和python3
+http://www.cnblogs.com/wangchaowei/p/6921191.html
+
+brew install mysql numpy scipy matplotlib 
+
+pip
+https://bootstrap.pypa.io/get-pip.py
+
+curl https://bootstrap.pypa.io/ez_setup.py -o - | sudo python
+sudo easy_install pip
+
+Traceback (most recent call last):
+  File "/usr/local/bin/easy_install", line 11, in <module>
+    load_entry_point('setuptools==33.1.1', 'console_scripts', 'easy_install')()
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/pkg_resources/__init__.py", line 565, in load_entry_point
+    return get_distribution(dist).load_entry_point(group, name)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/pkg_resources/__init__.py", line 2697, in load_entry_point
+    return ep.load()
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/pkg_resources/__init__.py", line 2370, in load
+    return self.resolve()
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/pkg_resources/__init__.py", line 2376, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "build/bdist.macosx-10.12-intel/egg/setuptools/__init__.py", line 10, in <module>
+  File "build/bdist.macosx-10.12-intel/egg/setuptools/extern/__init__.py", line 1, in <module>
+ImportError: No module named extern
+
+
+
+sudo pip install mysql-python pandas

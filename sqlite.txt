@@ -1,0 +1,19 @@
+
+sqlite3
+1. 单表最大行数？
+2. 导入数据？
+
+http://www.runoob.com/sqlite/sqlite-tutorial.html
+
+https://www.sqlite.org/csv.html
+
+http://www.runoob.com/sqlite/sqlite-commands.html
+
+SQLite - Python
+http://www.runoob.com/sqlite/sqlite-python.html
+
+CREATE TABLE orders (
+	date integer PRIMARY KEY NOT NULL,
+    total integer NOT NULL,
+    wise integer NOT NULL
+);
