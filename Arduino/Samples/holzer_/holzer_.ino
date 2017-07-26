@@ -5,25 +5,34 @@
  * 问题： 原理还不清楚，不知道具体该如何测速
 */
 
+#define PIN_LED 12
 #define PIN_D0 2
 #define PIN_A0 0
 
 void setup()
 {
-  // put your setup code here, to run once:
+  pinMode(PIN_LED, OUTPUT);
   pinMode(PIN_D0, INPUT);
+  pinMode(PIN_A0, INPUT); //A0无效？
   Serial.begin(9600);
 }
 
 void loop()
 {
-  int d = digitalRead(PIN_D0);
-  int a = analogRead(PIN_A0);
+  int d = digitalRead(PIN_D0); 
 
-  Serial.print("a:");
-  Serial.println(a);
+  if(d==LOW){
+    digitalWrite(PIN_LED,HIGH);
+  }else{
+    digitalWrite(PIN_LED,LOW);
+  }
 
-  Serial.print("d:");
-  Serial.println(d);
-  Serial.println("");
+  // int a = analogRead(PIN_A0);
+
+  // Serial.print("a:");
+  // Serial.println(a);
+
+  // Serial.print("d:");
+  // Serial.println(d);
+  // Serial.println("");
 }
