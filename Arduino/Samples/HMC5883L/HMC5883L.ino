@@ -1,12 +1,31 @@
+
+
 /*
-硬件：https://item.taobao.com/item.htm?id=43808540465
-名称：HMC5883L模块(三轴磁场模块)
-型号：GY-271
-通信方式：IIC通信协议
-测量范围：±1.3-8 高斯
+硬件： https://item.taobao.com/item.htm?id=43808540465
+名称： HMC5883L 模块(三轴磁场模块)
+型号： GY-271
+通信方式： IIC通信协议
+测量范围： ±1.3-8 高斯
+连接方式： 
+HMC5883L | UNO | Mega2560
+SCL      | A5  |  21
+SDA      | A4  |  20
+DRDY为中断引脚
+
+HMC5883L Lib:
+https://github.com/jarzebski/Arduino-HMC5883L
+
+
+常见几种arduino型号的IIC引脚定义
+Uno, Ethernet |	A4 (SDA), A5 (SCL)
+Mega2560	| 20 (SDA), 21 (SCL)
+Leonardo	| 2 (SDA), 3 (SCL)
+Due	20 (SDA), | 21  (SCL), SDA1, SCL1
+
 */
 
 #include <Wire.h> //I2C Arduino Library
+#include <HMC5883L.h>
 
 #define address 0x1E //0011110b, I2C 7bit address of HMC5883
 
