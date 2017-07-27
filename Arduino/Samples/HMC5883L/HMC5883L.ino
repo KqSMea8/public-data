@@ -1,6 +1,5 @@
-
-
 /*
+状态： 未成功
 硬件： https://item.taobao.com/item.htm?id=43808540465
 名称： HMC5883L 模块(三轴磁场模块)
 型号： GY-271
