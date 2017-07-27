@@ -1,0 +1,15 @@
+numpy.txt
+
+1. 统计相关
+2. 线性代数
+
+对数收益率
+波动率
+投资学？
+
+arange
+array
+dtype
+
+big-endian
+little-endian
