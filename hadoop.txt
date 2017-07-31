@@ -32,45 +32,44 @@ YARN的工作机制
 
 
 
-二、实践
-官方文档：http://hadoop.apache.org/docs/current/index.html
+二、伪分布式环境安装配置 
+    1. 下载
+        mkdir ~/Bigdata 
+        cd ~/Bigdata 
+        wget http://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/hadoop-2.8.1/hadoop-2.8.1.tar.gz
+        tar -zxvf hadoop-2.8.1.tar.gz
 
-file:///Users/gaotianpu/BigData/hadoop-2.8.0/share/doc/hadoop/index.html
-# 一定要找对应版本号的文档，某些细节会不一致
+    2. ssh设置 伪分布式需要用到
+        cd ~ 
+        ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+        cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+        ssh localhost 
 
-1. 安装配置hadoop
-    export HADOOP_INSTALL=/Users/gaotianpu/BigData/hadoop-2.8.0
-    export PATH=$PATH:$HADOOP_INSTALL/bin
-    export PATH=$PATH:$HADOOP_INSTALL/sbin #?
-    #查看编辑已有的？
-    vim /Users/gaotianpu/.bash_profile
-    source /Users/gaotianpu/.bash_profile  #立即生效  http://elf8848.iteye.com/blog/1582137
-     # #不能执行*.sh, 环境变量？
+    3. 安装JDK
+        java 
 
-    Hadoop伪分布式配置？
-    http://blog.csdn.net/lcj369387335/article/details/45046167
-    配置文件目录：etc/hadoop/
-    etc/hadoop/core-site.xml
-    etc/hadoop/hdfs-site.xml
-    etc/hadoop/mapred-site.xml.template?
+    4. vim ~/.bash_profile
+        export HADOOP_HOME=/Users/gaotianpu/BigData/hadoop-2.8.1
+        export PATH=$PATH:$HADOOP_HOME/bin
+        #export PATH=$PATH:$HADOOP_HOME/sbin #?
+        
+        source ~/.bash_profile  #立即生效  
+        #http://elf8848.iteye.com/blog/1582137
+        
+    5. Hadoop伪分布式配置？
+        http://blog.csdn.net/lcj369387335/article/details/45046167
+        配置文件目录：etc/hadoop/
+        etc/hadoop/core-site.xml
+        etc/hadoop/hdfs-site.xml
+        etc/hadoop/mapred-site.xml.template?
 
-    #ssh设置 伪分布式需要用到
-    ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
-    cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-    ssh localhost  
+    6. 启动伪分布式
+        bin/hadoop namenode -format #每次启动前必须先执行format操作？
+        sbin/start-all.sh #启动进程
+        jps  #确认java进程
 
-    #启动伪分布式
-    1. stop-dfs.sh   / stop-yarn.sh #?
-    2. hadoop namenode -format   #ssh localhost 后没法执行hadoop?
-    3. start-dfs.sh  #每次启动前必须先执行format操作？
-    4. jps 确认java进程
-    5. web查看，了解熟悉页面中每项含义
-        http://localhost:50070/ 
-
-    1. start-yarn.sh  #start-mapred.sh #2.8.0没这个了
-    2. web查看 了解熟悉页面中每项含义
-        http://localhost:8088/
-    3. stop-yarn.sh 
+        http://localhost:50070/ #hdfs
+        http://localhost:8088/ #mapreduce 
 
     #系统启动时自动运行？
 

@@ -3,7 +3,8 @@ python
 Mac系统下安装ipython分别支持python2和python3
 http://www.cnblogs.com/wangchaowei/p/6921191.html
 
-brew install mysql numpy scipy matplotlib 
+brew install numpy matplotlib scipy 
+sudo pip install mysql-python pandas
 
 pip
 https://bootstrap.pypa.io/get-pip.py
@@ -26,6 +27,13 @@ Traceback (most recent call last):
   File "build/bdist.macosx-10.12-intel/egg/setuptools/extern/__init__.py", line 1, in <module>
 ImportError: No module named extern
 
+Command "/usr/bin/python -u -c "import setuptools, tokenize;__file__='/private/tmp/pip-build-wElnFN/scandir/setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\r\n', '\n');f.close();exec(compile(code, __file__, 'exec'))" install --record /tmp/pip-6TJK5Z-record/install-record.txt --single-version-externally-managed --compile" failed with error code 1 in /private/tmp/pip-build-wElnFN/scandir/
+xcode-select --install
+
+OSError: [Errno 1] Operation not permitted: '/System/Library/Frameworks/Python.framework/Versions/2.7/share
+http://xiaorui.cc/2016/03/27/%E8%A7%A3%E5%86%B3mac-osx%E4%B8%8Bpip%E5%AE%89%E8%A3%85ipython%E6%9D%83%E9%99%90%E7%9A%84%E9%97%AE%E9%A2%98/
 
 
-sudo pip install mysql-python pandas
+from IPython import start_ipython ImportError: No module named IPython
+
+

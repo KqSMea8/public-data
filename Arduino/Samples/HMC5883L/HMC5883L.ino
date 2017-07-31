@@ -1,5 +1,5 @@
 /*
-硬件：https://item.taobao.com/item.htm?id=43808540465
+传感器：https://item.taobao.com/item.htm?id=43808540465
 名称：HMC5883L模块(三轴磁场模块)
 型号：GY-271
 通信方式：IIC通信协议
@@ -30,7 +30,6 @@ void loop(){
   Wire.write(0x03); //select register 3, X MSB register
   Wire.endTransmission();
   
- 
  //Read data from each axis, 2 registers per axis
   Wire.requestFrom(address, 6);
   if(6<=Wire.available()){
