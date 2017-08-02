@@ -46,29 +46,44 @@ Parquet
 二、实践
 1. 下载安装
 http://spark.apache.org/
+http://www.jianshu.com/p/3720656a390d
+
+http://www.cnblogs.com/ysisl/p/5979268.html
 
 2. 配置
 export SPARK_HOME=/Users/gaotianpu/Bigdata/spark-2.1.1-bin-hadoop2.7
 export PATH=$PATH:$SPARK_HOME/bin
-export PATH=$PATH:$SPARK_HOME/sbin
+#export PATH=$PATH:$SPARK_HOME/sbin
+
+cp log4j.properties.template log4j.properties
+INFO ? WARN
+
+scala是否是必须的？
 
 #配置ipython？
 set IPYTHON=1 #不生效？
 
 #命令行
-spark-shell #scala
 pyspark  #python 
-#sparkR?
 
-
-17/04/17 10:43:54 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... 
-using builtin-java classes where applicable
-
-17/06/19 13:17:39 WARN ObjectStore: Failed to get database global_temp, returning NoSuchObjectException
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+17/08/02 15:12:11 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+17/08/02 15:12:19 WARN ObjectStore: Version information not found in metastore. hive.metastore.schema.verification is not enabled so recording the schema version 1.2.0
+17/08/02 15:12:20 WARN ObjectStore: Failed to get database default, returning NoSuchObjectException
+17/08/02 15:12:20 WARN ObjectStore: Failed to get database global_temp, returning NoSuchObjectException
 
 17/04/17 10:43:54 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(gaotianpu); groups with view permissions: Set(); users  with modify permissions: Set(gaotianpu); groups with modify permissions: Set()
 
+http://guibin.iteye.com/blog/1999238
+
+Mac OSX 下 Hadoop 使用本地库提高效率
+http://rockyfeng.me/hadoop_native_library_mac.html
+
+spark-shell #scala
+#sparkR?
+
 3. Spark-SQL
+http://spark.apache.org/docs/latest/sql-programming-guide.html
 spark-sql shell ?
 jdbc?
 beeline?
