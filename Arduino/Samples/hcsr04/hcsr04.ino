@@ -45,6 +45,8 @@ void alarm(){
     
     //蜂鸣器;'
     ]OU MHadfbn
+  }
+  
 void loop()
 { 
   float distance = getDistance();

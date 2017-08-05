@@ -1,4 +1,5 @@
 {
     "board": "arduino:avr:uno",
-    "sketch": "Arduino/Samples/HMC5883L/HMC5883L.ino"
+    "sketch": "Arduino/Samples/alarm/alarm.ino",
+    "port": "/dev/cu.usbmodem1421"
 }

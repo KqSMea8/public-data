@@ -1,11 +1,4 @@
 /*
-<<<<<<< HEAD
-传感器：https://item.taobao.com/item.htm?id=43808540465
-名称：HMC5883L模块(三轴磁场模块)
-型号：GY-271
-通信方式：IIC通信协议
-测量范围：±1.3-8 高斯
-=======
 状态： 未成功
 硬件： https://item.taobao.com/item.htm?id=43808540465
 名称： HMC5883L 模块(三轴磁场模块)
@@ -28,7 +21,6 @@ Mega2560	| 20 (SDA), 21 (SCL)
 Leonardo	| 2 (SDA), 3 (SCL)
 Due	20 (SDA), | 21  (SCL), SDA1, SCL1
 
->>>>>>> fa3168de7432c98992095161e913c6556fa8ddba
 */
 
 #include <Wire.h> //I2C Arduino Library

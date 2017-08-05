@@ -1,7 +1,10 @@
-/*
+/* 温湿度传感器
  * 传感器： https://item.taobao.com/item.htm?&id=521702401130
+ * 工作电压：DC5V/3.3V
  * DHTlib : https://github.com/adafruit/DHT-sensor-library
  * Sample: https://github.com/adafruit/DHT-sensor-library/blob/master/examples/DHT_Unified_Sensor/DHT_Unified_Sensor.ino
+ * 数据精度需要校准？
+ 
 */
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
@@ -31,6 +34,7 @@ void setup() {
   Serial.print  ("Min Value:    "); Serial.print(sensor.min_value); Serial.println(" *C");
   Serial.print  ("Resolution:   "); Serial.print(sensor.resolution); Serial.println(" *C");  
   Serial.println("------------------------------------");
+  
   // Print humidity sensor details.
   dht.humidity().getSensor(&sensor);
   Serial.println("------------------------------------");
@@ -49,9 +53,14 @@ void setup() {
 void loop() {
  // Delay between measurements.
   delay(delayMS);
+
   // Get temperature event and print its value.
   sensors_event_t event;  
   dht.temperature().getEvent(&event);
+  
+  //event.temperature
+  //event.relative_humidity
+
   if (isnan(event.temperature)) {
     Serial.println("Error reading temperature!");
   }
