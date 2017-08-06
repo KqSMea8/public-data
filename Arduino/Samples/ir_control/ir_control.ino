@@ -1,6 +1,7 @@
+/*
+*/
 #include <IRremote.h>
 #include <IRremoteInt.h> 
-
 
 //这段代码来自IRremote库中examples中的 IRrecvDemo
 //#include <IRremote.h>          //调用IRremote.h库
