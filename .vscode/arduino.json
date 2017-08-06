@@ -1,5 +1,5 @@
 {
     "board": "arduino:avr:uno",
-    "sketch": "Arduino/Samples/alarm/alarm.ino",
+    "sketch": "Arduino/Samples/lm35/lm35.ino",
     "port": "/dev/cu.usbmodem1421"
 }

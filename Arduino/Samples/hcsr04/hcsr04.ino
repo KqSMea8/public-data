@@ -44,7 +44,7 @@ void alarm(){
     toneVal = 2000+(int(sinVal*1600));
     
     //蜂鸣器;'
-    ]OU MHadfbn
+    //]OU MHadfbn
   }
   
 void loop()
