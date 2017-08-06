@@ -37,6 +37,20 @@ void loop(){
       Serial.print(dist_mm, DEC);   
       Serial.println("mm");         
     }
+
+    Serial.flush();    // 清空串口接收缓冲区
+    Serial.write(0x50);   // 发送0x50，触发US-100 开始测温
+    delay(500);
+
+    if(Serial.available() >= 1) {  
+      unsigned int tdata = Serial.read();        // 温度字节
+      unsigned int temp = tdata-45; // 计算温度值
+    
+      Serial.print("Temperature is: ");// 输出结果至串口监视器
+      Serial.print(temp, DEC);   
+      Serial.println(".C"); 
+    }
+
   }
   
   delay(500); // 等待500ms
