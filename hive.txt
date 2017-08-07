@@ -8,7 +8,7 @@ hive
 
     #JDBC驱动
     cp mysql-connector-java-5.1.43-bin.jar $HIVE_HOME/lib/mysql-connector-java-5.1.43-bin.jar
-    cp $HIVE_HOME/lib/jline-2.12.jar  $HIVE_HOME/libexec/share/hadoop/yarn/lib/jline-2.12.jar
+    cp $HIVE_HOME/lib/jline-2.12.jar  $HADOOP_HOME/share/hadoop/yarn/lib/jline-2.12.jar
 
 
     cp ./hive-default.xml.template ./hive-default.xml
