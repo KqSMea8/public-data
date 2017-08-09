@@ -3,6 +3,7 @@ numpy.txt
 1. 概率统计
 2. 线性代数
 创建矩阵
+矩阵计算 + - * 求逆 转置
 	字符串
 	numpy数组
 	单位矩阵
@@ -32,3 +33,13 @@ dtype
 
 big-endian
 little-endian
+
+http://www.cnblogs.com/jasonli-01/p/6373681.html
+http://blog.csdn.net/sunpeng19960715/article/details/52777155
+http://youerning.blog.51cto.com/10513771/1714455
+http://www.cnblogs.com/sirkevin/p/5738185.html
+http://ms.csdn.net/geek/94153
+http://blog.csdn.net/liyuanbhu/article/details/28611429
+http://www.jianshu.com/p/bdb4cc476e87
+
+sed -i 'y/\t/,/' flight_orders.csv
