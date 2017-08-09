@@ -30,6 +30,8 @@
         DS1302 CR2032
         DS323 AT24C32
         24C32 DS1307
+    * HB100 C4B2 doppler radar 
+        https://github.com/dlpoole/HB100-Doppler-Vehicle-Speed-Measurement
 
 
 
