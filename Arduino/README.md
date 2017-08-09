@@ -9,17 +9,27 @@
 7. IIC通信
 8. UART通信
 9. 传感器
-GY-271 HMC5883L 三轴磁场传感器
-GY-91 MPU9250+BMP280 10DOF
-GY-521 MPU-6050 三轴加速度陀螺仪 6DOF
- * https://playground.arduino.cc/Main/MPU-6050
- * https://github.com/jarzebski/Arduino-MPU6050
-
-TCS3200 颜色识别
-
-NRF24L01 SI24R1 D1B2  #2.4G
-A7105 CC2500/NRF24L01 #2.4G
-
+    DHT11
+    * lib可安装
+    GY-271 HMC5883L 三轴磁场传感器
+    * lib可安装
+    GY-91 MPU9250+BMP280 10DOF
+    * lib可安装
+    GY-521 MPU-6050 三轴加速度陀螺仪 6DOF
+    * https://playground.arduino.cc/Main/MPU-6050
+    * https://github.com/jarzebski/Arduino-MPU6050
+    TCS3200 颜色识别
+    * lib可安装
+    NRF24L01 SI24R1 D1B2  #2.4G
+    * lib可安装 比较多选哪个？
+    A7105 CC2500/NRF24L01 #2.4G
+    * https://github.com/cassm/a7105
+    RTC
+    * RTCLib 可安装
+        PCF8563T
+        DS1302 CR2032
+        DS323 AT24C32
+        24C32 DS1307
 
 
 
