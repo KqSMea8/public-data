@@ -40,3 +40,5 @@ WARNING:tensorflow:From /Users/baidu/Library/Python/2.7/lib/python/site-packages
 
 http://www.52cs.org/?p=1157
 https://github.com/tobegit3hub/tensorflow_examples
+
+http://blog.csdn.net/lenbow/article/details/52152766

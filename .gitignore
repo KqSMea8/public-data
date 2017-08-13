@@ -216,3 +216,4 @@ pip-log.txt
 
 Arduino/libraries/
 Arduino/.vscode/
+tensorflow/checkpoint_files
