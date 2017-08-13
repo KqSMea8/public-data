@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import tensorflow as tf
 import math
 import os

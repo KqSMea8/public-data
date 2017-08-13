@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import tensorflow as tf
 import numpy as np
 
@@ -8,6 +8,7 @@ import numpy as np
 examples = tf.SparseTensor(indices=[[0, 1], [0, 3], [0, 7], [1, 0], [1, 3], [1, 8]], 
                            values=["a", "0.7", "2.5", "1.3", "0", "2.8"], 
                            shape=[2, 10])
+#SparseTensor？
 
 vocabulary_size = 10
 embedding_size = 1

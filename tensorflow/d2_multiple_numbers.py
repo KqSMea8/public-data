@@ -1,9 +1,9 @@
-#!/usr/bin/env python
-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import tensorflow as tf
 
 
-import pudb;pudb.set_trace()
+# import pudb;pudb.set_trace()
 
 number1 = tf.constant(1.5)
 number2 = tf.constant(3.5)
