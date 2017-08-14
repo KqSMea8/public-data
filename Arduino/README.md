@@ -9,24 +9,28 @@
 7. IIC通信
 8. UART通信
 9. 传感器
-    DHT11
-    * lib可安装
     
-       
+    DHT11
+    * lib可安装 
+    
     TCS3200 颜色识别
     * lib可安装
+    
     NRF24L01 SI24R1 D1B2  #2.4G
     * lib可安装 比较多选哪个？
+    
     A7105 CC2500/NRF24L01 #2.4G
     * https://github.com/cassm/a7105
+    
     RTC
     * RTCLib 可安装
         PCF8563T
         DS1302 CR2032
         DS323 AT24C32
         24C32 DS1307
-    * HB100 C4B2 doppler radar 
-        https://github.com/dlpoole/HB100-Doppler-Vehicle-Speed-Measurement
+    
+    HB100 C4B2 doppler radar 
+    * https://github.com/dlpoole/HB100-Doppler-Vehicle-Speed-Measurement
 
     GY-271 HMC5883L 三轴磁场传感器 （还不行，怀疑是硬件问题）
     * lib可安装

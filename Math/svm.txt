@@ -1,0 +1,5 @@
+支持向量机 Support Vecor Machine
+http://www.cnblogs.com/pinard/p/6097604.html
+
+函数间隔和几何间隔
+

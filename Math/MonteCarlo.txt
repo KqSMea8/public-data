@@ -1,0 +1,2 @@
+蒙特卡罗方法
+http://www.ruanyifeng.com/blog/2015/07/monte-carlo-method.html
