@@ -3,6 +3,7 @@
 
 1. install 
 pip install tensorflow --user -U
+pip install tensorboard --user -U
 
 TensorFlow建议使用二进制的TFRecords格式，这样可以支持QueuRunner和Coordinator进行多线程数据读取，并且可以通过batch size和epoch参数来控制训练时单次batch的大小和对样本文件迭代训练多少轮。
 
@@ -42,3 +43,109 @@ http://www.52cs.org/?p=1157
 https://github.com/tobegit3hub/tensorflow_examples
 
 http://blog.csdn.net/lenbow/article/details/52152766
+
+代价模型
+
+通讯
+RDMA？
+心跳检测
+自动求导
+
+SWIG?
+
+evealuate
+grid search
+cross validation
+
+spark 大规模数据
+tensorflow 数据规模内存可加载
+
+TensorBoard 安装？
+beam search ?
+必须构建静态图
+CPU上的矩阵运算库Eigen? BLAS?
+
+loss function?
+
+cross-entropy
+
+cuDNN?
+
+keras, 可运行在Tensorflow上
+
+前馈网络
+
+python anaconda
+
+softmax regression,多分类任务
+
+无监督自编码(autoEncoder)
+SGD参数？
+
+Dropout - 减轻过拟合,
+Adagrad - 自适应学习速率,
+ReLU - 解决梯度弥散的激活函数
+
+bagging
+
+梯度弥散(Gradient vanishment)
+激活函数：Sigmoid,ReLU,Softplus
+ReLu变种：EIU,PReLU
+XOR问题
+
+卷积神经网络,Convolutional Neural Network
+
+SIFT,HoG
+卷积的权值共享
+抽取特征-核滤波，抗行变 - 激活函数，最大池化max-pooling
+全连接，局部连接
+
+数据增强(data augmentation)
+
+AlexNet,VGGnet,Google Inception Net,ResNet
+LRN
+
+~~
+循环神经网络 RNN
+
+稠密向量
+向量表达
+最大似然
+
+强化学习,连续决策 (Reinforcement Learning)
+* Environment State
+* Action
+* Reward 根据时间衰减系数
+有序列输出
+
+
+deepmind
+    策略网络 Policy-network
+    估值网络 value-network,即DQN
+    蒙特卡洛树 Monte Carlo Tree search
+    快速走子Fast Rollout
+
+Policy Gradients
+    Policy-Based
+    Value-Based, 所有action的Q值，取最高的
+
+OpenAI-Gym, 强化学习的环境生成工具，标准化环境，对算法对比测试
+可以大批量深度学习
+目标变化的、不明确的
+DQN,DeepQ-network
+
+未来Reward衰减系数
+
+
+自我意识
+    什么是自我意识？
+    高级自我意识， 镜子实验，只有人类(4岁以上)，黑猩猩、大象、海豚等动物才能识别出镜子里出现的是自己？
+
+策略网络，根据环境制定行动
+
+Q-Learning
+
+有限马尔可夫决策过程
+
+TF.Learn
+Estimator 
