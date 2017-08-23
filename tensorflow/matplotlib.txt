@@ -1,0 +1,9 @@
+http://blog.csdn.net/wizardforcel/article/details/54407212
+http://www.cnblogs.com/fxjwind/p/3923028.html
+
+
+http://matplotlib.org/gallery.html
+
+import matplotlib.pyplot as plt
+
+ipython --pylab  交互方式绘图

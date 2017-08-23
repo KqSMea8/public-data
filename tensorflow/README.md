@@ -1,5 +1,11 @@
 问题：
 1. Tensorflow实现分布式计算的机制？
+2. 为啥要用GPU？
+运算符
+
+什么是张量Tensor?
+
+the matrix cookbook
 
 1. install 
 pip install tensorflow --user -U
@@ -15,8 +21,19 @@ Sgd、Rmsprop还是选择Adagrad、Ftrl
 
 TensorBoard
 Protobuf
+链式法则(chain rule)
 
 Google Cloud ML服务
+
+并行计算
+    代价模型
+    TCP/RDMA
+
+RDMA,Remote Direct Memory Access,远程直接数据存取
+
+数据并行
+模型并行
+流水线并行
 
 分布式TensorFlow中ps、worker、in-graph、between-graph、synchronous training和asynchronous training的概念。
 * ps是整个训练集群的参数服务器，保存模型的Variable
