@@ -1,5 +1,34 @@
 python
 
+Google Python Style Guide
+https://google.github.io/styleguide/pyguide.html
+
+yes:
+for key in adict: 
+for k, v in dict.iteritems(): ...
+for line in afile
+
+no:
+for key in adict.keys(): ...
+
+类库
+traceback，cPickle，pickle
+pdb The Python Debugger
+copy
+commands
+traceback
+
+#习惯命名
+import pandas as pd
+import numpy as np
+import dask.dataframe as dd
+需要安装 pytest-runner
+
+https://www.zhihu.com/question/50477642
+
+
+ln -s /usr/local/python-2.7.6/bin/python /usr/bin/python
+
 python -m site --user-site #package位置
 
 app_from=bainuo&jp_uuid=&stats_type=show&server_v=4.0&time=1501742761293&app_v=7.3.0&os=ios&extra_info={}&page_name=fillOrderPg&os_ver=8.1&app_ver=7.3.0&client=ios&fe_v=20170802 (1x1) 
@@ -40,5 +69,34 @@ http://xiaorui.cc/2016/03/27/%E8%A7%A3%E5%86%B3mac-osx%E4%B8%8Bpip%E5%AE%89%E8%A
 
 
 from IPython import start_ipython ImportError: No module named IPython
+
+
+
+http://www.justinablog.com/archives/1357
+安装Pandas:
+wget https://pypi.python.org/packages/ee/aa/90c06f249cf4408fa75135ad0df7d64c09cf74c9870733862491ed5f3a50/pandas-0.20.3.tar.gz#md5=4df858f28b4bf4fa07d9fbb7f2568173
+tar zxvf pandas-0.20.3.tar.gz 
+cd pandas-0.20.3
+python setup.py install
+python setup.py build_ext --inplace --force
+
+warning: #warning "Using deprecated NumPy API, 
+disable it by " "#defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION"
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "pandas/__init__.py", line 35, in <module>
+    "the C extensions first.".format(module))
+ImportError: C extension: No module named tslib not built. 
+If you want to import pandas from the source directory, 
+you may need to run 'python setup.py build_ext --inplace --force' to build the C extensions first.
+
+sys:1: DtypeWarning: Columns (3) have mixed types. 
+Specify dtype option on import or set low_memory=False.
+仅仅是Warning？
+http://www.cnblogs.com/datablog/p/6127000.html
+
+*** glibc detected *** free(): invalid pointer: 0x00007f6cc349fa47 ***
+Aborted (core dumped)
 
 
