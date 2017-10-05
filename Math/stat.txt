@@ -1,0 +1,39 @@
+统计相关
+http://www.php230.com/1489385426.html
+
+import numpy as np 
+import scipy 
+
+一、基本概念
+1. 数据集中程度：
+np.mean(data)  #均值（Mean） sum()/n
+np.median(data) #中位数（Median） 
+scipy.stats.mode(data)  #众数（Mode）离散？
+
+2. 数据离散程度：
+np.ptp(data)  #极差（PTP）, max()-min()
+np.var(data)  #方差（Variance） sum( (x-mean)** )/n 
+np.std(data)  标准差（STD）
+np.mean(data) / np.std(data) #变异系数（CV）, STD/Mean 
+
+3. 偏差程度（z-分数）
+Z-score = (x-Mean)/STD
+z-分数的绝对值大于3将视为异常
+
+4. 相关程度
+协方差,COV 
+协方差的绝对值越大表示相关程度越大，协方差为正值表示正相关，负值为负相关，0为不相关。
+sum( (x-meanX)*(y-meanY) )/N
+np.cov(data, bias=1)
+
+相关系数,CORRCOEF  
+相关系数是基于协方差但进行了无量纲处理
+cov/std1*std2
+np.corrcoef(data)
+
+无量纲处理
+
+二、图表
+柱形，条形，饼图
+累积曲线
+散点图
