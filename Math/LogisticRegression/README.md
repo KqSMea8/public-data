@@ -1,4 +1,9 @@
-logistic regression
+# LogisticRegression
+Logistic regression from scratch in Python
+
+This example uses gradient descent to fit the model.
+It also contains a Scikit Learn's way of doing logistic regression, so we can compare the two implementations.
+
 
 https://chenrudan.github.io/blog/2016/01/09/logisticregression.html
 随着时间的增加，一个国家的大小（我理解为资源）和这个国家人们的生育能力限制了人口的增长，人口数量会渐渐趋近一个稳定值。
@@ -16,3 +21,4 @@ https://www.ibm.com/support/knowledgecenter/zh/SSLVMB_22.0.0/com.ibm.spss.statis
 http://bluewhale.cc/2016-05-18/logistic-regression.html
 http://blog.csdn.net/zouxy09/article/details/20319673
 http://blog.sciencenet.cn/blog-508318-633085.html
+
