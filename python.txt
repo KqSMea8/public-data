@@ -3,6 +3,12 @@ python
 Google Python Style Guide
 https://google.github.io/styleguide/pyguide.html
 
+pythonic
+https://zhuanlan.zhihu.com/p/20376482
+https://www.quora.com/What-are-some-examples-of-beautiful-Pythonic-code
+http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html
+http://docs.python-guide.org/en/latest/writing/style/
+
 yes:
 for key in adict: 
 for k, v in dict.iteritems(): ...
@@ -99,4 +105,5 @@ http://www.cnblogs.com/datablog/p/6127000.html
 *** glibc detected *** free(): invalid pointer: 0x00007f6cc349fa47 ***
 Aborted (core dumped)
 
+aaaa  bbb  cccaa
 

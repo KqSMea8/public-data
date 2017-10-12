@@ -1,4 +1,5 @@
-numpy.txt
+numpy
+ndarray
 
 1. 概率统计
 平均数、众数、中位数
