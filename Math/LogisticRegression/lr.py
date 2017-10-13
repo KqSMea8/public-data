@@ -7,9 +7,9 @@ https://lz5z.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B8%B8%E7%94%A8%E7%AE%97
 import os
 import sys
 import numpy as np
-# import sklearn as skl 
-from sklearn import preprocessing
-from sklearn import metrics
+import sklearn as skl 
+# from sklearn import preprocessing
+# from sklearn import metrics
 from sklearn.linear_model import LogisticRegression
 
 
@@ -35,8 +35,8 @@ def main():
     x = dataset[:, 0:7] #特征
     y = dataset[:, 8] #label
     # 数据归一化
-    normalized_x = preprocessing.normalize(x)
-    
+    normalized_x = skl.preprocessing.normalize(x)
+
     # 逻辑回归
     model = LogisticRegression() 
     model.fit(normalized_x, y)
@@ -46,8 +46,8 @@ def main():
     predicted = model.predict(normalized_x)
 
     # 模型拟合概述
-    print(metrics.classification_report(expected, predicted))
-    print(metrics.confusion_matrix(expected, predicted))
+    print(skl.metrics.classification_report(expected, predicted))
+    print(skl.metrics.confusion_matrix(expected, predicted))
 
 
 
@@ -56,8 +56,12 @@ if __name__ == "__main__":
 
 
 '''
-..... /2.7/Extras/lib/python/scipy/sparse/coo.py:200: 
+问题： /2.7/Extras/lib/python/scipy/sparse/coo.py:200: 
 VisibleDeprecationWarning: `rank` is deprecated; 
 use the `ndim` attribute or function instead. 
 To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+解决办法：pip install --upgrade scipy --user -U
+
+http://www.jianshu.com/p/ef37f739b531
+
 '''
