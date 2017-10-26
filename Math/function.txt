@@ -1,0 +1,14 @@
+sigmoid
+softmax
+argmax
+softplus
+径向基函数 RBF
+双曲正切函数 tanh
+
+Hessian矩阵
+
+偏导数
+最大似然
+各种分布
+
+协方差

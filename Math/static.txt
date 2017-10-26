@@ -1,0 +1,106 @@
+程序员数学之概率统计
+http://greenteapress.com/thinkstats/
+
+学习目标：
+1. 概率统计相关概念
+2. matplotlib绘制各种图表
+http://blog.csdn.net/wizardforcel/article/details/54407212
+http://www.cnblogs.com/fxjwind/p/3923028.html
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+众数
+均值 mean
+方差 
+标准差 std
+变异系数，标准差/均值
+中位数 median
+四分差 interquartile range 
+频数,
+概率，
+归一化
+PMF，probablity mass function，概率质量函数
+相对风险relative risk ，两个概率的比值
+条件概率，conditional probablity ？？？
+
+根据PMF生成测试数据？
+
+最高、最低值剪修
+
+直方图
+
+累积分布函数，CDF，cumulative distribution function 
+百分位数，percentile
+百分等级，percentile rank 
+CDF(x),给定x，样本中小于等于x值的比例
+过采样
+对分算法
+CDF为阶跃函数
+
+条件分布
+生成服从给定分布的随机数，根据已有样本生成随机样本，再抽样resampling
+
+从总体获得样本，有放回，无放回
+随机抽样过程
+放回 replacement
+random.random() #百分等级
+random.choice() #有放回抽样
+random.sample() #无放回抽样
+random.expovariate() #服从指数分布的随机数
+
+经验分布 empirical  distribution
+连续分布 continuous distribution
+指数分布 exponential distribution
+互补累积分布函数 Complementary CDF 
+
+帕累托分布 pareto
+zipf
+威布尔分布
+
+正态分布
+误差函数 error function 
+正态概率图 normal probablity plot 
+秩变换 rankit,对n个服从正态分布的值排序，第k个值分布的均值，第k个秩变换
+对数正态分布 
+ICDF, inverse CDF 逆CDF
+语料库 corpus
+
+概率
+    频率论 frequentism
+    贝叶斯认知论 bayesianism
+
+P(AB) = P(A)P(B) ,AB相互独立
+P(A|B) = P(AB)/P(B) 条件概率 
+P(AB) = P(A|B)P(B) 
+互斥？
+
+蒙提霍尔问题
+
+二项分布
+
+聚类错觉 clustering illusion
+蒙特卡罗模拟
+
+偏度，分布不对称程度的度量
+均方离差，立方离差
+负偏度，左偏
+比较均值和中位数的大小
+皮尔逊中值偏度系数
+鲁棒
+
+卡方检验
+
+置信区间
+
+缺失率
+
+删失数据(censored data)
+
+相关性
+
+
+
+
+
+
