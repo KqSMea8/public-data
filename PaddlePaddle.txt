@@ -4,5 +4,3 @@ http://www.paddlepaddle.org/index.cn.html
 https://github.com/PaddlePaddle/book/blob/develop/README.cn.md#运行这本书
 
 二、经典机器学习
-
-http://bit.baidu.com/course/detail/id/137.html
