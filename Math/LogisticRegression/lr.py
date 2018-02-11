@@ -47,7 +47,11 @@ def main():
 
     # 模型拟合概述
     print(skl.metrics.classification_report(expected, predicted))
+    # precision    recall  f1-score   support ?
+    
     print(skl.metrics.confusion_matrix(expected, predicted))
+    #[ [481  19]
+    #  [251  17] ]
 
 
 

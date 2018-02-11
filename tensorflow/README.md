@@ -1,3 +1,21 @@
+一、安装
+virtualenv
+
+sudo pip install --upgrade virtualenv
+virtualenv --system-site-packages ~/Documents/tensorflow
+source ~/Documents/tensorflow/bin/activate
+
+vim ~/.bash_profile
+
+cd ~/Documents/Github/public-data/tensorflow
+jupyter notebook
+
+conda 虚拟环境
+
+二、sample
+
+
+
 问题：
 1. Tensorflow实现分布式计算的机制？
 2. 为啥要用GPU？
@@ -50,7 +68,7 @@ RDMA,Remote Direct Memory Access,远程直接数据存取
 3. 公共知识图谱库
 4. 个人知识图谱 - 仿人脑的记忆功能？
 
-WARNING:tensorflow:From /Users/baidu/Library/Python/2.7/lib/python/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+WARNING:tensorflow:From /Users/gaotianpu/Library/Python/2.7/lib/python/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
 2017-08-08 17:21:47.545545: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
 2017-08-08 17:21:47.545572: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
 2017-08-08 17:21:47.545577: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
