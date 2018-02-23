@@ -8,7 +8,7 @@ pip3 install virtualenv --upgrade
 virtualenv --system-site-packages ~/Documents/tensorflow
 source  bin/activate
 
-pip3 install jupyter tensorflow numpy matplotlib scipy scikit-image librosa nltk keras mysql-python pandas -U
+pip install jupyter tensorflow numpy matplotlib scipy scikit-image librosa nltk keras mysql-python pandas -U
 
 
 
