@@ -1,7 +1,7 @@
 *.DS_Store
 *.log
 *.pyc
-*.ipynb_checkpoints/
+*.ipynb_checkpoints
 
 tensorflow/tmp
 tensorflow/checkpoint_files
