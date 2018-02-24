@@ -3,7 +3,7 @@
 *.pyc
 *.ipynb_checkpoints/
 
-tensorflow/graph
+tensorflow/tmp
 tensorflow/checkpoint_files
 
 Arduino/libraries/
