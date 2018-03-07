@@ -7,6 +7,7 @@ from helpers import lazy_property
 class EmbeddingModel:
 
     def __init__(self, data, target, params):
+        """model = EmbeddingModel(data, target, params)"""
         self.data = data
         self.target = target
         self.params = params
@@ -28,7 +29,7 @@ class EmbeddingModel:
         return optimizer.minimize(self.cost)
 
     @lazy_property
-    def cost(self):
+    def cost(self): 
         embedded = tf.nn.embedding_lookup(self.embeddings, self.data)
         weight = tf.Variable(tf.truncated_normal(
             [self.params.vocabulary_size, self.params.embedding_size],
