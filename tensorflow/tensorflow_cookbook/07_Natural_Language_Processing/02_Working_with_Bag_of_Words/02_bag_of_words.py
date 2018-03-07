@@ -79,7 +79,7 @@ plt.hist(text_lengths, bins=25)
 plt.title('Histogram of # of Words in Texts')
 
 # Choose max text word length at 25
-sentence_size = 25
+sentence_size = 25 #句子长度限制，超过25
 min_word_freq = 3
 
 # Setup vocabulary processor
