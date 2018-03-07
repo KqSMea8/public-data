@@ -31,8 +31,10 @@ sess = tf.Session()
 batch_size = 25
 
 # Create data
+# 生成符合正态分布的数据 参数：均值、标准差、数量
 x_vals = np.random.normal(1, 0.1, 100)
 y_vals = np.repeat(10., 100)
+
 x_data = tf.placeholder(shape=[None, 1], dtype=tf.float32)
 y_target = tf.placeholder(shape=[None, 1], dtype=tf.float32)
 
