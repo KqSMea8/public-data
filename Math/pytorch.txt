@@ -1,0 +1,9 @@
+深度学习.txt
+http://pytorch.org/
+https://morvanzhou.github.io/tutorials/machine-learning/torch/
+
+https://zhuanlan.zhihu.com/p/25572330
+https://pytorch-cn.readthedocs.io/zh/latest/
+
+brew install conda
+conda install pytorch torchvision -c pytorch

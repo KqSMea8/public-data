@@ -1,0 +1,50 @@
+knn.txt
+一、原理部分
+http://www.cnblogs.com/MikeZhang/p/pyDataMiningKNN20170616.html
+http://www.cnblogs.com/pinard/p/6061661.html
+
+scale处理,归一化处置
+
+大边缘最近邻法,
+近邻成分分析法
+
+k一般低于训练样本数的平方根。
+选择K值得方法,cross-validate（交叉验证）误差统计选择法
+
+出现频率较多的样本将会主导测试点的预测结果,
+K个邻居到测试点的距离
+
+http://www.cnblogs.com/daniel-D/p/3244718.html
+1、欧氏距离
+2、曼哈顿距离
+3、切比雪夫距离
+4、闵可夫斯基距离(Minkowski Distance) p=2欧氏 p=12曼哈顿
+5、标准化欧氏距离 (Standardized Euclidean distance 
+6、马氏距离(Mahalanobis Distance)
+7、巴氏距离（Bhattacharyya Distance） 
+8、汉明距离(Hamming distance),非连续变量
+9、夹角余弦(Cosine)
+10、杰卡德相似系数(Jaccard similarity coefficient)
+11、皮尔森相关系数(Pearson Correlation Coefficient)
+
+二、scikit-learn
+https://zhuanlan.zhihu.com/p/23191325
+http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
+
+http://www.cnblogs.com/pinard/p/6065607.html
+http://www.cnblogs.com/xiaotan-code/p/6680438.html
+
+http://blog.csdn.net/gamer_gyt/article/details/51232210
+
+
+
+http://noahsnail.com/2017/05/02/2017-5-2-scikit-learn%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95(%E4%B8%80)%E2%80%94%E2%80%94KNN%E7%AE%97%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8/
+
+http://python.jobbole.com/81721/
+
+
+http://scikit-learn.org/stable/modules/neighbors.html
+
+
+https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm
+

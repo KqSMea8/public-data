@@ -1,0 +1,17 @@
+一. Hadoop & HDFS  存储
+
+二、Hive
+http://www.cnblogs.com/sharpxiajun/archive/2013/06/02/3114180.html
+1. 架构 hql ... map/reduce ... 结果?
+结构化的数据文件映射为一张数据库表
+非结构化的json是否可行？
+
+三. Spark  计算
+
+
+四、Palo
+安装部署：
+https://github.com/gaotianpu/palo/blob/master/docs/admin_guide/install.md
+
+
+五. ProtoBuffer 存储格式

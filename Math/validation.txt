@@ -1,0 +1,33 @@
+Validation.txt
+
+http://blog.csdn.net/dream_angel_z/article/details/47110077
+1. Holdout 验证
+	将原始数据随机分为两组,一组做为训练集,一组做为验证集,利用训练集训练分类器,然后利用验证集验证模型,记录最后的分类准确率为此Hold-OutMethod下分类器的性能指标.。Hold-OutMethod相对于K-fold Cross Validation 又称Double cross-validation ，或相对K-CV称 2-fold cross-validation(2-CV)
+2. K-fold cross-validation 
+	K折交叉验证，初始采样分割成K个子样本，一个单独的子样本被保留作为验证模型的数据，其他K-1个样本用来训练。交叉验证重复K次，每个子样本验证一次，平均K次的结果或者使用其它结合方式，最终得到一个单一估测。
+3. 留一验证(LOOCV)
+
+
+sklearn:
+http://scikit-learn.org/dev/modules/cross_validation.html#cross-validation
+
+train_test_split
+1. train_test_split 函数会保证正负样本数量一致？
+
+from sklearn.model_selection import train_test_split # 分割数据模块
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=4)	
+
+
+https://morvanzhou.github.io/tutorials/machine-learning/sklearn/3-2-cross-validation1/
+
+# 基础验证法
+from sklearn.model_selection import train_test_split # 分割数据模块
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=4)
+
+# 交叉验证法(Cross Validation)
+from sklearn.cross_validation import cross_val_score # K折交叉验证模块
+scores = cross_val_score(knn, X, y, cv=5, scoring='accuracy')
+print(scores.mean())
+
+
+

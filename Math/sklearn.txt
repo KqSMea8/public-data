@@ -1,8 +1,21 @@
 sklearn
 理论与实践结合，sklearn作为实践工具，相比是极好的。
 
-https://ptorch.com/news/51.html
+重点了解：
+1. 逻辑回归
+2. svm
+
+特征选取：
+
+
 http://python.jobbole.com/81721/
+树算法就可以计算特征的信息量。
+递归特征消除算法（RFE）
+
+
+https://ptorch.com/news/51.html
+
+
 
 
 http://www.cnblogs.com/zhizhan/p/5007398.html

@@ -1,5 +1,22 @@
 python
 
+一、开发环境
+Mac系统下安装ipython分别支持python2和python3
+http://www.cnblogs.com/wangchaowei/p/6921191.html
+
+pip3 install virtualenv --upgrade
+virtualenv --system-site-packages ~/Documents/tensorflow
+source  bin/activate
+
+pip install jupyter tensorflow numpy matplotlib scipy scikit-image librosa nltk keras mysql-python pandas -U
+
+
+
+
+pip
+https://bootstrap.pypa.io/get-pip.py
+
+
 Google Python Style Guide
 https://google.github.io/styleguide/pyguide.html
 
@@ -40,14 +57,9 @@ python -m site --user-site #package位置
 app_from=bainuo&jp_uuid=&stats_type=show&server_v=4.0&time=1501742761293&app_v=7.3.0&os=ios&extra_info={}&page_name=fillOrderPg&os_ver=8.1&app_ver=7.3.0&client=ios&fe_v=20170802 (1x1) 
 jp_uuid=&app_from=bainuo&client=ios&os=ios&app_v=7.1.0&page_name=fillOrderPg&stats_type=click&element_name=pay&partner=1&extra_info={"is_domestic":"1","ab":"a"}&fe_v=20170720&server_v=4.0&src_from=&fr=&time=1500887165345&os_ver=9.1.0&app_ver=7.1.0 
 
-Mac系统下安装ipython分别支持python2和python3
-http://www.cnblogs.com/wangchaowei/p/6921191.html
 
-brew install numpy matplotlib scipy 
-sudo pip install mysql-python pandas
 
-pip
-https://bootstrap.pypa.io/get-pip.py
+
 
 curl https://bootstrap.pypa.io/ez_setup.py -o - | sudo python
 sudo easy_install pip
