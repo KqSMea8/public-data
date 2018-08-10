@@ -24,8 +24,6 @@ from tensorflow.python.framework import ops
 ops.reset_default_graph()
 
 
-
-
 def get_data(): 
     """下载数据"""
     # Check if data was downloaded, otherwise download it and save for future use
@@ -106,84 +104,87 @@ def tokenizer(text):
     return words
 
 
-max_features = 1000
-batch_size = 200
-learning_rate = 0.0025
+def run():
+
+    max_features = 1000
+    batch_size = 200
+    learning_rate = 0.0005
 
 
-# 获取数据
-texts,target = get_data() 
+    # 获取数据
+    texts,target = get_data() 
 
-# Create TF-IDF of texts
-tfidf = TfidfVectorizer(tokenizer=tokenizer, stop_words='english', max_features=max_features)
-sparse_tfidf_texts = tfidf.fit_transform(texts)
+    # Create TF-IDF of texts
+    tfidf = TfidfVectorizer(tokenizer=tokenizer, stop_words='english', max_features=max_features)
+    sparse_tfidf_texts = tfidf.fit_transform(texts)
 
-# Split up data set into train/test
-train_indices = np.random.choice(sparse_tfidf_texts.shape[0], round(0.8*sparse_tfidf_texts.shape[0]), replace=False)
-test_indices = np.array(list(set(range(sparse_tfidf_texts.shape[0])) - set(train_indices)))
-texts_train = sparse_tfidf_texts[train_indices]
-texts_test = sparse_tfidf_texts[test_indices]
-target_train = np.array([x for ix, x in enumerate(target) if ix in train_indices])
-target_test = np.array([x for ix, x in enumerate(target) if ix in test_indices])
+    # Split up data set into train/test
+    train_indices = np.random.choice(sparse_tfidf_texts.shape[0], round(0.8*sparse_tfidf_texts.shape[0]), replace=False)
+    test_indices = np.array(list(set(range(sparse_tfidf_texts.shape[0])) - set(train_indices)))
+    texts_train = sparse_tfidf_texts[train_indices]
+    texts_test = sparse_tfidf_texts[test_indices]
+    target_train = np.array([x for ix, x in enumerate(target) if ix in train_indices])
+    target_test = np.array([x for ix, x in enumerate(target) if ix in test_indices])
 
-# Create variables for logistic regression
-A = tf.Variable(tf.random_normal(shape=[max_features,1]))
-b = tf.Variable(tf.random_normal(shape=[1,1]))
+    # Create variables for logistic regression
+    A = tf.Variable(tf.random_normal(shape=[max_features,1]))
+    b = tf.Variable(tf.random_normal(shape=[1,1]))
 
-# Initialize placeholders
-x_data = tf.placeholder(shape=[None, max_features], dtype=tf.float32)
-y_target = tf.placeholder(shape=[None, 1], dtype=tf.float32)
+    # Initialize placeholders
+    x_data = tf.placeholder(shape=[None, max_features], dtype=tf.float32)
+    y_target = tf.placeholder(shape=[None, 1], dtype=tf.float32)
 
-# 定义推断模型 Declare logistic model (sigmoid in loss function)
-model_output = tf.add(tf.matmul(x_data, A), b)
+    # 定义推断模型 Declare logistic model (sigmoid in loss function)
+    model_output = tf.add(tf.matmul(x_data, A), b)
 
-# 定义损失函数 Declare loss function (Cross Entropy loss)
-loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=model_output, labels=y_target))
+    # 定义损失函数 Declare loss function (Cross Entropy loss)
+    loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=model_output, labels=y_target))
 
-# 定义优化器 Declare optimizer 
-train_step = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)
+    # 定义优化器 Declare optimizer 
+    train_step = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)
 
-# 定义评估函数 3种方式 Actual Prediction
-prediction = tf.round(tf.sigmoid(model_output))
-predictions_correct = tf.cast(tf.equal(prediction, y_target), tf.float32)
-accuracy = tf.reduce_mean(predictions_correct)
+    # 定义评估函数 3种方式 Actual Prediction
+    prediction = tf.round(tf.sigmoid(model_output))
+    predictions_correct = tf.cast(tf.equal(prediction, y_target), tf.float32)
+    accuracy = tf.reduce_mean(predictions_correct)
 
 
-# Start a graph session, Intitialize Variables
-sess = tf.Session() 
-init = tf.global_variables_initializer()
-sess.run(init)
+    # Start a graph session, Intitialize Variables
+    sess = tf.Session() 
+    init = tf.global_variables_initializer()
+    sess.run(init)
 
-# Start Logistic Regression
-train_loss = []
-test_loss = []
-train_acc = []
-test_acc = []
-i_data = []
-for i in range(10000):
-    rand_index = np.random.choice(texts_train.shape[0], size=batch_size)
-    rand_x = texts_train[rand_index].todense()
-    rand_y = np.transpose([target_train[rand_index]])
-    sess.run(train_step, feed_dict={x_data: rand_x, y_target: rand_y})
-    
-    # Only record loss and accuracy every 100 generations
-    if (i+1)%100==0:
-        i_data.append(i+1)
-        train_loss_temp = sess.run(loss, feed_dict={x_data: rand_x, y_target: rand_y})
-        train_loss.append(train_loss_temp)
+    # Start Logistic Regression
+    train_loss = []
+    test_loss = []
+    train_acc = []
+    test_acc = []
+    i_data = []
+    for i in range(50000):
+        rand_index = np.random.choice(texts_train.shape[0], size=batch_size)
+        rand_x = texts_train[rand_index].todense()
+        rand_y = np.transpose([target_train[rand_index]])
+        sess.run(train_step, feed_dict={x_data: rand_x, y_target: rand_y})
         
-        test_loss_temp = sess.run(loss, feed_dict={x_data: texts_test.todense(), y_target: np.transpose([target_test])})
-        test_loss.append(test_loss_temp)
+        # Only record loss and accuracy every 100 generations
+        if (i+1)%100==0:
+            i_data.append(i+1)
+            train_loss_temp = sess.run(loss, feed_dict={x_data: rand_x, y_target: rand_y})
+            train_loss.append(train_loss_temp)
+            
+            test_loss_temp = sess.run(loss, feed_dict={x_data: texts_test.todense(), y_target: np.transpose([target_test])})
+            test_loss.append(test_loss_temp)
+            
+            train_acc_temp = sess.run(accuracy, feed_dict={x_data: rand_x, y_target: rand_y})
+            train_acc.append(train_acc_temp)
         
-        train_acc_temp = sess.run(accuracy, feed_dict={x_data: rand_x, y_target: rand_y})
-        train_acc.append(train_acc_temp)
-    
-        test_acc_temp = sess.run(accuracy, feed_dict={x_data: texts_test.todense(), y_target: np.transpose([target_test])})
-        test_acc.append(test_acc_temp)
-    if (i+1)%500==0:
-        acc_and_loss = [i+1, train_loss_temp, test_loss_temp, train_acc_temp, test_acc_temp]
-        acc_and_loss = [np.round(x,2) for x in acc_and_loss]
-        print('Generation # {}. Train Loss (Test Loss): {:.2f} ({:.2f}). Train Acc (Test Acc): {:.2f} ({:.2f})'.format(*acc_and_loss))
+            test_acc_temp = sess.run(accuracy, feed_dict={x_data: texts_test.todense(), y_target: np.transpose([target_test])})
+            test_acc.append(test_acc_temp)
+        if (i+1)%500==0:
+            acc_and_loss = [i+1, train_loss_temp, test_loss_temp, train_acc_temp, test_acc_temp]
+            acc_and_loss = [np.round(x,2) for x in acc_and_loss]
+            print('Generation # {}. Train Loss (Test Loss): {:.2f} ({:.2f}). Train Acc (Test Acc): {:.2f} ({:.2f})'.format(*acc_and_loss))
 
-plt_show(i_data,train_loss,test_loss)
+    # plt_show(i_data,train_loss,test_loss)
 
+run()

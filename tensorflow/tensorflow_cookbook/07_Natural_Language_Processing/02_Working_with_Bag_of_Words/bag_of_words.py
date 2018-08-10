@@ -84,7 +84,7 @@ def plt_txt_len(texts):
     plt.hist(text_lengths, bins=25)
     plt.title('Histogram of # of Words in Texts')
 
-def plt_train(train_acc_avg,train_acc_avg):
+def plt_train(train_acc_avg):
     "Plot training accuracy over time"
     plt.plot(range(len(train_acc_avg)), train_acc_avg, 'k-', label='Train Accuracy')
     plt.title('Avg Training Acc Over Past 50 Generations')
@@ -96,7 +96,7 @@ def plt_train(train_acc_avg,train_acc_avg):
 texts,target = get_data() 
 
 # 划分训练集/测试集 Split up data set into train/test 
-train_indices = np.random.choice(len(texts), round(len(texts)*0.8), replace=False)
+train_indices = np.random.choice(len(texts), round(len(texts)*0.9), replace=False)
 test_indices = np.array(list(set(range(len(texts))) - set(train_indices)))
 texts_train = [x for ix, x in enumerate(texts) if ix in train_indices]
 texts_test = [x for ix, x in enumerate(texts) if ix in test_indices]
@@ -126,7 +126,7 @@ identity_mat = tf.diag(tf.ones(shape=[embedding_size]))
 # 构建one-hot 词向量 Text-Vocab Embedding
 x_embed = tf.nn.embedding_lookup(identity_mat, x_data)
 x_col_sums = tf.reduce_sum(x_embed, 0) #[0,1,1,0,...] 
-x_col_sums_2D = tf.expand_dims(x_col_sums, 0) #[[0,1,1,0,...]] #向量转矩阵
+x_col_sums_2D = tf.expand_dims(x_col_sums, 0) #[[0,1,1,0,...]] #向量转矩阵,为啥？
 
 # 定义推断模型 Declare model operations
 model_output = tf.add(tf.matmul(x_col_sums_2D, A), b)
@@ -152,11 +152,13 @@ train_acc_all = []
 train_acc_avg = []
 for ix, t in enumerate(vocab_processor.fit_transform(texts_train)):
     y_data = [[target_train[ix]]] 
+    # print(t)
 
+    #单个训练，批训练的差异？
     sess.run(train_step, feed_dict={x_data: t, y_target: y_data})
+
     temp_loss = sess.run(loss, feed_dict={x_data: t, y_target: y_data})
-    loss_vec.append(temp_loss)
-    
+    loss_vec.append(temp_loss) 
     if (ix+1)%10==0:
         print('Training Observation #' + str(ix+1) + ': Loss = ' + str(temp_loss))
         
@@ -186,6 +188,6 @@ for ix, t in enumerate(vocab_processor.fit_transform(texts_test)):
     test_acc_all.append(test_acc_temp)
 
 print('\nOverall Test Accuracy: {}'.format(np.mean(test_acc_all)))
-# plt_train(train_acc_avg,train_acc_avg)
+# plt_train(train_acc_avg)
 
 

@@ -2,12 +2,14 @@
 4	tf.abs
 67	tf.add
 2	tf.add_n
+
 3	tf.app.flags.DEFINE_boolean
 3	tf.app.flags.DEFINE_float
 7	tf.app.flags.DEFINE_integer
 4	tf.app.flags.DEFINE_string
 2	tf.app.flags.FLAGS
 3	tf.app.run
+
 2	tf.arg_max
 3	tf.arg_min
 5	tf.argmax
@@ -18,6 +20,7 @@
 5	tf.concat
 1	tf.ConfigProto
 67	tf.constant
+
 2	tf.contrib.keras.datasets.cifar10.load_data
 2	tf.contrib.learn.preprocessing.VocabularyProcessor
 1	tf.contrib.learn.preprocessing.VocabularyProcessor.restore
@@ -28,6 +31,8 @@
 2	tf.contrib.rnn.DropoutWrapper
 2	tf.contrib.rnn.MultiRNNCell
 2	tf.contrib.rnn.static_bidirectional_rnn
+
+
 2	tf.convert_to_tensor
 2	tf.cos
 2	tf.cross
@@ -52,6 +57,7 @@
 1	tf.GraphDef
 3	tf.group
 2	tf.identity
+
 2	tf.image.decode_png
 1	tf.image.per_image_standardization
 1	tf.image.random_brightness
@@ -59,6 +65,7 @@
 1	tf.image.random_flip_left_right
 1	tf.image.resize_bilinear
 1	tf.image.resize_image_with_crop_or_pad
+
 1	tf.import_graph_def
 1	tf.initialize_all_variables
 1	tf.InteractiveSession
@@ -75,6 +82,7 @@
 31	tf.multiply
 7	tf.name_scope
 4	tf.negative
+
 1	tf.nn.batch_norm_with_global_normalization
 5	tf.nn.bias_add
 17	tf.nn.conv2d
@@ -103,6 +111,7 @@
 4	tf.nn.tanh
 7	tf.nn.top_k
 2	tf.nn.weighted_cross_entropy_with_logits
+
 4	tf.ones
 229	tf.placeholder 
 14	tf.random_normal

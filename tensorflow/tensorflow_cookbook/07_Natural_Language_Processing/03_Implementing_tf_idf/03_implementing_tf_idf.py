@@ -10,7 +10,7 @@
 #  use the regular TensorFlow logistic algorithm outline.
 
 import tensorflow as tf
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import csv
 import numpy as np
 import os
@@ -151,19 +151,19 @@ for i in range(10000):
 
 
 # Plot loss over time
-plt.plot(i_data, train_loss, 'k-', label='Train Loss')
-plt.plot(i_data, test_loss, 'r--', label='Test Loss', linewidth=4)
-plt.title('Cross Entropy Loss per Generation')
-plt.xlabel('Generation')
-plt.ylabel('Cross Entropy Loss')
-plt.legend(loc='upper right')
-plt.show()
+# plt.plot(i_data, train_loss, 'k-', label='Train Loss')
+# plt.plot(i_data, test_loss, 'r--', label='Test Loss', linewidth=4)
+# plt.title('Cross Entropy Loss per Generation')
+# plt.xlabel('Generation')
+# plt.ylabel('Cross Entropy Loss')
+# plt.legend(loc='upper right')
+# plt.show()
 
-# Plot train and test accuracy
-plt.plot(i_data, train_acc, 'k-', label='Train Set Accuracy')
-plt.plot(i_data, test_acc, 'r--', label='Test Set Accuracy', linewidth=4)
-plt.title('Train and Test Accuracy')
-plt.xlabel('Generation')
-plt.ylabel('Accuracy')
-plt.legend(loc='lower right')
-plt.show()
+# # Plot train and test accuracy
+# plt.plot(i_data, train_acc, 'k-', label='Train Set Accuracy')
+# plt.plot(i_data, test_acc, 'r--', label='Test Set Accuracy', linewidth=4)
+# plt.title('Train and Test Accuracy')
+# plt.xlabel('Generation')
+# plt.ylabel('Accuracy')
+# plt.legend(loc='lower right')
+# plt.show()

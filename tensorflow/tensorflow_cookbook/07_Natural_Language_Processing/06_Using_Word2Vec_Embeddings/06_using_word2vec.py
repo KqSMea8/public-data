@@ -32,7 +32,7 @@ sess = tf.Session()
 embedding_size = 200
 vocabulary_size = 2000
 batch_size = 100
-max_words = 100
+max_words = 100 #每个句子最长单词数？
 
 # Declare stop words
 stops = stopwords.words('english')

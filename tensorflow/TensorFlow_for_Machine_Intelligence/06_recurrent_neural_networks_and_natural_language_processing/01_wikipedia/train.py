@@ -21,17 +21,16 @@ params = AttrDict(
     batch_size=1000,
 )
 
-data = tf.placeholder(tf.int32, [None])
+
+data = tf.placeholder(tf.int32, [None]) # float32 int32
 target = tf.placeholder(tf.int32, [None])
 model = EmbeddingModel(data, target, params)
-
-corpus = Wikipedia(
-    'https://dumps.wikimedia.org/enwiki/20160501/'
-    'enwiki-20160501-pages-meta-current1.xml-p000000010p000030303.bz2',
-    WIKI_DOWNLOAD_DIR,
-    params.vocabulary_size)
 examples = skipgrams(corpus, params.max_context)
 batches = batched(examples, params.batch_size)
+
+corpus = Wikipedia('https://dumps.wikimedia.org/enwiki/20180301/enwiki-20180301-pages-articles-multistream.xml.bz2',
+    WIKI_DOWNLOAD_DIR,
+    params.vocabulary_size)
 
 sess = tf.Session()
 sess.run(tf.initialize_all_variables())
