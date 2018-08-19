@@ -10,3 +10,6 @@ Arduino/libraries/
 Arduino/.vscode/
 
 
+fasttext/data
+fasttext/output
+
