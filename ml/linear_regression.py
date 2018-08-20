@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 线性回归
+简单参数 y=ax+b
+参考：https://github.com/Shicoder/DeepLearning_Demo/blob/master/linear_regression_use_gradient_decent/linear_regression.py
 """
 from __future__ import absolute_import
 from __future__ import division
@@ -57,7 +59,7 @@ class Linear_regression:
 
     def __gradient_descent_optimizer(self, X, Y):
         """优化算法:梯度下降"""
-        w_gradient = -(2/self.N)*x*(Y-self.W*X-self.b)  # self.predict(X)？
+        w_gradient = -(2/self.N)*X*(Y-self.W*X-self.b)  # self.predict(X)？ x又是什么鬼？
         w_gradient = np.sum(w_gradient, axis=0)
 
         b_gradient = -(2/self.N)*(Y-self.W*X-self.b)  # 均方误差求导
