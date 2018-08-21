@@ -1,8 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-多(1+)特征 线性回归
+多元线性回归，矩阵运算
+https://blog.csdn.net/Timerzz/article/details/80328767
+
 https://medium.com/we-are-orb/multivariate-linear-regression-in-python-without-scikit-learn-7091b1d45905
+
+http://zhouyichu.com/machine-learning/Gradient-Code/
+http://python.jobbole.com/86921/
+
 """
 from __future__ import absolute_import
 from __future__ import division
@@ -15,10 +21,10 @@ import matplotlib.pyplot as plt
 def generate_dataset():
     """生成训练数据 y=ax+b""" 
     # W = np.array([[2], [5], [10]])
-    W = np.array([2.0,3.0,10.0]).reshape(-1, 1) 
+    W = np.array([2.0,3.0,10]) #.reshape(-1, 1) 
 
     # numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
-    train_X = np.linspace(-1, 1,100).reshape(-1, 2)
+    train_X = np.linspace(-1, 1 , 6).reshape(-1, 2) 
 
     #train_Y
     tmp_x = np.hstack([train_X, np.ones((train_X.shape[0], 1))])  
@@ -59,6 +65,9 @@ class Linear_regression:
         """  
         return (np.sum((self.predict(X) - Y)**2)) / (2*self.N) 
 
+        inner = np.power(((X @ theta.T) - y), 2) # @ means matrix multiplication of arrays. If we want to use * for multiplication we will have to convert all arrays to matrices
+        return np.sum(inner) / (2 * self.N)
+
         # tobesummed = np.power(((X @ theta.T)-y),2)
         # return np.sum(tobesummed)/(2 * len(X))  
 
@@ -92,12 +101,25 @@ class Linear_regression:
         # for j in range(parameters):
         #     term = np.multiply(error, X[:,j])
 
-        # theta = self.W
+        theta = self.W
         # theta = theta - (self.learning_rate/len(X)) * np.sum(X * (X @ theta.T - Y), axis=0)
 
-        theta = self.W - (self.learning_rate/self.N) * \
-            (X.T.dot(X.dot(self.W) - Y)) 
-        self.W = theta
+        n = X.shape[1]
+        newtheta = np.array([0]*n,dtype=np.float)
+        for j in range(0,n):
+            count = 0
+            for i in range(self.N):
+                count += (self.H(theta,X[i,:]) - Y[i]) * X[i,j]
+            newtheta[j] = (theta[j] - alpha / self.N * count )
+        
+        self.W = newtheta
+
+        # theta = self.W - (self.learning_rate/self.N) * \
+        #     (X.T.dot(X.dot(self.W) - Y)) 
+        # self.W = theta
+    
+    def H(self,theta,x):
+        return theta.dot(x)
 
     def fit(self, X, Y):
         """训练 train"""
@@ -122,8 +144,8 @@ if __name__ == "__main__":
     model = Linear_regression(np.zeros((3, 1)), 0.001, 100000)
     w = model.fit(x, y)
     print(w)
-    # print('x=[6.6,7], y=', model.predict([6.6,7]))
-    # draw_pic(x, y, w, b)
+    # # print('x=[6.6,7], y=', model.predict([6.6,7]))
+    # # draw_pic(x, y, w, b)
 
     # model
 
