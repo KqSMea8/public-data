@@ -3,7 +3,12 @@
 """
 线性回归
 简单参数 y=ax+b
-参考：https://github.com/Shicoder/DeepLearning_Demo/blob/master/linear_regression_use_gradient_decent/linear_regression.py
+参考：
+https://blog.csdn.net/sxf1061926959/article/details/66976356
+https://github.com/Shicoder/DeepLearning_Demo/blob/master/linear_regression_use_gradient_decent/linear_regression.py
+
+https://www.kaggle.com/rehmanm/linear-regression-with-numpy/notebook
+
 """
 from __future__ import absolute_import
 from __future__ import division
@@ -50,10 +55,7 @@ class Linear_regression:
         return self.W*X-self.b  # +，- b不影响？
 
     def __loss(self, X, Y):
-        """定义损失函数:均方误差mse
-        rmse：(根均方误差)
-        mse：(均方误差) 
-        """
+        """定义损失函数:均方误差mse"""
         return np.sqrt(((Y - self.predict(X)) ** 2).mean())
         # return np.sum((Y - self.predict(X))**2, axis=0)/self.N
 
