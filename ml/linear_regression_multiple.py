@@ -44,17 +44,16 @@ class Linear_regression:
     """线性回归,需参考sklearn的实现"""
 
     def __init__(self, w, learning_rate=0.001, num_iter=20000):
-        self.W = np.array(w)
-        # print(self.W)
+        self.W = np.array(w) 
 
         self.learning_rate = learning_rate
         self.num_iter = num_iter
 
     def predict(self, X):
-        """定义预测模型 y=ax+b"""
-        X = np.hstack([X, np.ones((x.shape[0], 1))]
-                      )  # 考虑到偏置项b参与到矩阵运算，X最后加一个值为1的列
-        return X @ self.W.T  # 不等价于 X.dot(self.W)
+        """定义预测模型 y=X*W.T"""
+        # 考虑到偏置项b参与到矩阵运算，X最后加一个值为1的列
+        X = np.hstack([X, np.ones((x.shape[0], 1))])  
+        return X @ self.W.T  # 不等价于? X.dot(self.W)
         # return X.dot(self.W)
 
     def loss(self, X, Y):
@@ -81,7 +80,7 @@ class Linear_regression:
         theta = self.W - (self.learning_rate/len(X)) * np.sum(X * (X @ self.W.T - Y), axis=0)
         self.W = theta
 
-        # theta = theta - (alpha/len(X)) * np.sum(X * (X @ theta.T - y), axis=0)
+         
         # print("X @ self.W.T =",  X @ self.W.T )
         # print("X @ self.W.T - Y =", X @ self.W.T - Y)
         # print("X * ( X @ self.W.T - Y ) =",  X * ( X @ self.W.T - Y )  ) #error ? ValueError: operands could not be broadcast together with shapes (5,3) (5,)
@@ -110,6 +109,10 @@ if __name__ == "__main__":
 
     learning_rate = 0.001
     num_iter = 10000
+
+    model = Linear_regression(np.zeros([1, len(w)]), learning_rate, num_iter)
+    w = model.fit(x, y)
+
     # print(x)
     # print(y)
     # print(x.shape[0])
@@ -119,8 +122,7 @@ if __name__ == "__main__":
     # print(np.zeros([1,3]))
 
     # np.zeros((3,5))
-    model = Linear_regression(np.zeros([1, len(w)]), learning_rate, num_iter)
-    w = model.fit(x, y)
+    
     # # # pre_y = model.predict(x)
     # # # print(pre_y)
 
