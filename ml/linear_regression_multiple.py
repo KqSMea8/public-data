@@ -51,8 +51,7 @@ class Linear_regression:
 
     def predict(self, X):
         """定义预测模型 y=X*W.T"""
-        # 考虑到偏置项b参与到矩阵运算，X最后加一个值为1的列
-        X = np.hstack([X, np.ones((x.shape[0], 1))])  
+        # 考虑到偏置项b参与到矩阵运算，X最后加一个值为1的列 
         return X @ self.W.T  # 不等价于? X.dot(self.W)
         # return X.dot(self.W)
 
@@ -73,11 +72,10 @@ class Linear_regression:
     def optimize(self, X, Y):
         """优化算法:梯度下降"""
         # https://blog.csdn.net/qq_26222859/article/details/73326088
-        # https://uqer.io/v3/community/share/596da6e8f83a2100527016b0
+        # https://uqer.io/v3/community/share/596da6e8f83a2100527016b0 
 
-        X = np.hstack([X, np.ones((X.shape[0], 1))])
-
-        theta = self.W - (self.learning_rate/len(X)) * np.sum(X * (X @ self.W.T - Y), axis=0)
+        #X @ self.W.T  =  self.predict(X)
+        theta = self.W - (self.learning_rate/len(X)) * np.sum(X * ( self.predict(X) - Y), axis=0)
         self.W = theta
 
          
@@ -90,9 +88,7 @@ class Linear_regression:
         # theta = self.W - (self.learning_rate/len(tmp_x)) * np.sum(tmp_x * ( self.predict(X) ), axis=0)
 
     def fit(self, X, Y):
-        """训练 train"""
-        # X = np.hstack([X, np.ones((x.shape[0], 1))])
-
+        """训练 train""" 
         for i in range(self.num_iter):
             self.optimize(X, Y)
             if i % 100 == 0:
@@ -106,11 +102,11 @@ class Linear_regression:
 if __name__ == "__main__":
     w = [1, 3, 5]
     x, y = gen_train_data(w, 500)
+    x = np.hstack([x, np.ones((x.shape[0], 1))])
 
     learning_rate = 0.001
-    num_iter = 10000
-
-    model = Linear_regression(np.zeros([1, len(w)]), learning_rate, num_iter)
+    num_iter = 10000 
+    model = Linear_regression(np.zeros([1, len(w)]), learning_rate, num_iter) 
     w = model.fit(x, y)
 
     # print(x)
