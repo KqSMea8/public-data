@@ -66,10 +66,15 @@ class Linear_regression:
         error = Y - self.predict(X) # Y - pre_Y 这个顺序不能换？
         # error = self.predict(X) - Y  
 
-        w_gradient = -(2/self.N)*error*X  # self.predict(X)？ x又是什么鬼？
-        w_gradient = np.sum(w_gradient, axis=0)
+        # w_gradient = -(2/self.N)*error*X  # self.predict(X)？ x又是什么鬼？
+        # w_gradient = np.sum(w_gradient, axis=0) 
+        # b_gradient = -(2/self.N)*error  # 均方误差求导
+        # b_gradient = np.sum(b_gradient, axis=0)
 
-        b_gradient = -(2/self.N)*error  # 均方误差求导
+        #去掉-(2/self.N)这样的常数，似乎对优化结果无影响
+        w_gradient = -error*X  # self.predict(X)？ x又是什么鬼？
+        w_gradient = np.sum(w_gradient, axis=0) 
+        b_gradient = -error  # 均方误差求导
         b_gradient = np.sum(b_gradient, axis=0)
 
         self.W = self.W - (self.learning_rate * w_gradient)
