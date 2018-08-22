@@ -1,9 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+import numpy as np
+
 """
 基于numpy的各种矩阵操作
+https://blog.csdn.net/tintinetmilou/article/details/78587760 矩阵求导
 """
-import numpy as np
+
 
 
 def gen_train_data(w, b=0.3, row_number=5):

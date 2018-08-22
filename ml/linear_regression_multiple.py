@@ -2,12 +2,10 @@
 # -*- coding: utf-8 -*-
 """
 多元线性回归，矩阵运算
-https://blog.csdn.net/Timerzz/article/details/80328767
-
 https://medium.com/we-are-orb/multivariate-linear-regression-in-python-without-scikit-learn-7091b1d45905
+https://github.com/Tan-Moy/medium_articles/blob/master/art2_multivariate_linear_regression/mlr.py
 
 http://zhouyichu.com/machine-learning/Gradient-Code/
-http://python.jobbole.com/86921/
 
 """
 from __future__ import absolute_import
@@ -18,119 +16,90 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def generate_dataset():
-    """生成训练数据 y=ax+b""" 
-    # W = np.array([[2], [5], [10]])
-    W = np.array([2.0,3.0,10]) #.reshape(-1, 1) 
 
-    # numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
-    train_X = np.linspace(-1, 1 , 6).reshape(-1, 2) 
+def gen_train_data(w, row_number=5):
+    """生成训练数据"""
+    W = np.array(w) #.reshape(-1,1)
+    # print(W.reshape(-1,1))
 
-    #train_Y
-    tmp_x = np.hstack([train_X, np.ones((train_X.shape[0], 1))])  
-    tmp_y = tmp_x.dot(W) 
-    tmp_y = tmp_y + np.random.randn(*tmp_y.shape) * 0.33 #加入随机抖动
-    train_Y = tmp_y.reshape(-1, 1)  
-     
-    return train_X, train_Y
+    dim_number = W.shape[0]-1  # W的最后一项是偏置项
+    # print(dim_number)
+
+    train_X = np.linspace(-1, 1, dim_number *
+                          row_number).reshape(-1, dim_number)  # 二维度数组
+
+    # print(np.ones((train_X.shape[0], 1)))
+    tmp_x = np.hstack([train_X, np.ones((train_X.shape[0], 1))])  # x 最后一列都是1
+    # print(tmp_x)
 
 
-def draw_pic(X, Y, m, b):
-    plt.scatter(x, y, alpha=0.8)
-    plt.plot([-1, 1], [-1*2+10, 1*2+10], ls='solid')  # 实际直线
-    plt.plot([-1, 1], [-1*m+b, 1*m+b], ls='dashdot')  # 拟合直线
-    plt.grid(True)
-    plt.show()
-    # pass
+    train_Y = tmp_x @ W.T  
+    # print(tmp_y)
+    r = np.random.randn(*train_Y.shape) * 0.33
+    # print( r )
+    train_Y = train_Y + r  # 加入数值随机抖动 .reshape(-1,1)
 
+    return train_X, train_Y.reshape(-1,1)
 
 class Linear_regression:
     """线性回归,需参考sklearn的实现"""
 
-    def __init__(self, W, learning_rate=0.001, num_iter=20000):
-        self.W = W
-        # self.b = b
+    def __init__(self, w, learning_rate=0.001, num_iter=20000):
+        self.W = np.array(w)
+        # print(self.W)
+
         self.learning_rate = learning_rate
         self.num_iter = num_iter
-        self.N = 0
 
     def predict(self, X):
         """定义预测模型 y=ax+b"""
-        return X.dot(self.W) 
+        X = np.hstack([X, np.ones((x.shape[0], 1))]
+                      )  # 考虑到偏置项b参与到矩阵运算，X最后加一个值为1的列
+        return X @ self.W.T  # 等价于 X.dot(self.W)
+        # return X.dot(self.W)
 
-    def __loss(self, X, Y):
+    def loss(self, X, Y):
         """定义损失函数:均方误差mse
         rmse：(根均方误差)
         mse：(均方误差) 
-        """  
-        return (np.sum((self.predict(X) - Y)**2)) / (2*self.N) 
+        """
+        cost = np.sum((self.predict(X) - Y)**2) / (2*X.shape[0])
+        # print("cost1", cost)
 
-        inner = np.power(((X @ theta.T) - y), 2) # @ means matrix multiplication of arrays. If we want to use * for multiplication we will have to convert all arrays to matrices
-        return np.sum(inner) / (2 * self.N)
+        # #np.power 和 **2 二者等价 ，哪个更好些？
+        # cost = np.sum(np.power( self.predict(X)-Y, 2)) / (2*X.shape[0])
+        # print("cost2",cost)
 
-        # tobesummed = np.power(((X @ theta.T)-y),2)
-        # return np.sum(tobesummed)/(2 * len(X))  
+        return cost
 
-        # J2 = (C.T.dot(C)) / (2*self.N)
-        # return J2  
-
-    def __gradient_descent_optimizer(self, X, Y):
-        """优化算法:梯度下降""" 
+    def optimize(self, X, Y):
+        """优化算法:梯度下降"""
         # https://blog.csdn.net/qq_26222859/article/details/73326088
         # https://uqer.io/v3/community/share/596da6e8f83a2100527016b0
 
-        # theta = self.W
-        # temp = np.matrix(np.zeros(theta.shape))
-        # parameters = int(theta.shape[1]) #ravel().
-        # # cost = np.zeros(iters)
         
-        # # for i in range(iters):
-        # error = (X * theta.T) - Y
-        
-        # for j in range(parameters):
-        #     term = np.multiply(error, X[:,j])
-        #     temp[0,j] = theta[0,j] - ((self.learning_rate / len(X)) * np.sum(term))
-            
-        # self.W = temp
-        
-            # cost[i] = computeCost(X, y, theta)
-            
-        # return theta, cost
+        # theta = theta - (alpha/len(X)) * np.sum(X * (X @ theta.T - y), axis=0)
 
-        # parameters = int(self.W.ravel().shape[1])
-        # for j in range(parameters):
-        #     term = np.multiply(error, X[:,j])
+        X = np.hstack([X, np.ones((X.shape[0], 1))]) 
+        # print("X @ self.W.T =",  X @ self.W.T ) 
+        # print("X @ self.W.T - Y =", X @ self.W.T - Y)
+        # print("X * ( X @ self.W.T - Y ) =",  X * ( X @ self.W.T - Y )  ) #error ? ValueError: operands could not be broadcast together with shapes (5,3) (5,)
+        # print( np.sum(X * ( X @ self.W.T - Y ), axis=0)  )
+        theta = self.W - (self.learning_rate/len(X)) * np.sum(X * ( X @ self.W.T - Y ), axis=0)
+        # tmp_x = np.hstack([X, np.ones((X.shape[0], 1))]) 
+        # theta = self.W - (self.learning_rate/len(tmp_x)) * np.sum(tmp_x * ( self.predict(X) ), axis=0)
 
-        theta = self.W
-        # theta = theta - (self.learning_rate/len(X)) * np.sum(X * (X @ theta.T - Y), axis=0)
-
-        n = X.shape[1]
-        newtheta = np.array([0]*n,dtype=np.float)
-        for j in range(0,n):
-            count = 0
-            for i in range(self.N):
-                count += (self.H(theta,X[i,:]) - Y[i]) * X[i,j]
-            newtheta[j] = (theta[j] - alpha / self.N * count )
-        
-        self.W = newtheta
-
-        # theta = self.W - (self.learning_rate/self.N) * \
-        #     (X.T.dot(X.dot(self.W) - Y)) 
-        # self.W = theta
-    
-    def H(self,theta,x):
-        return theta.dot(x)
+        self.W = theta 
+         
 
     def fit(self, X, Y):
         """训练 train"""
-        self.N = Y.shape[0]  # float(len(X))
-
-        X = np.hstack([X, np.ones((x.shape[0], 1))])
+        # X = np.hstack([X, np.ones((x.shape[0], 1))])
 
         for i in range(self.num_iter):
-            self.__gradient_descent_optimizer(X, Y)
+            self.optimize(X, Y)
             if i % 100 == 0:
-                error = self.__loss(X, Y)
+                error = self.loss(X, Y)
                 print('iter{0}:W={1},error={2}'.format(
                     i, self.W,  error))
 
@@ -138,12 +107,28 @@ class Linear_regression:
 
 
 if __name__ == "__main__":
-    x, y = generate_dataset()
-    # print(x)
-    # print(y)
-    model = Linear_regression(np.zeros((3, 1)), 0.001, 100000)
+    w = [1, 3, 5]
+    x, y = gen_train_data(w, 500)
+
+    learning_rate = 0.001
+    num_iter = 100000
+    print(x)
+    print(y)
+    # print(x.shape[0])
+    # print(w.shape)
+    # print(np.zeros(len(w)))
+
+    # print(np.zeros([1,3]))
+
+    # np.zeros((3,5))
+    model = Linear_regression(np.zeros([1,len(w)]), learning_rate , num_iter) 
     w = model.fit(x, y)
-    print(w)
+    # # # pre_y = model.predict(x)
+    # # # print(pre_y)
+
+    # cost = model.loss(x, y)
+
+    # print(w)
     # # print('x=[6.6,7], y=', model.predict([6.6,7]))
     # # draw_pic(x, y, w, b)
 
