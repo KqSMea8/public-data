@@ -52,19 +52,24 @@ class Linear_regression:
 
     def predict(self, X):
         """定义预测模型 y=ax+b"""
-        return self.W*X-self.b  # +，- b不影响？
+        return self.W*X + self.b  # +，- b不影响？
 
     def __loss(self, X, Y):
         """定义损失函数:均方误差mse"""
         return np.sqrt(((Y - self.predict(X)) ** 2).mean())
+        # return np.sqrt((( self.predict(X) - Y ) ** 2).mean()) 
         # return np.sum((Y - self.predict(X))**2, axis=0)/self.N
 
     def __gradient_descent_optimizer(self, X, Y):
         """优化算法:梯度下降"""
-        w_gradient = -(2/self.N)*X*(Y-self.W*X-self.b)  # self.predict(X)？ x又是什么鬼？
+        # error = Y - (self.W*X+self.b)
+        error = Y - self.predict(X) # Y - pre_Y 这个顺序不能换？
+        # error = self.predict(X) - Y  
+
+        w_gradient = -(2/self.N)*error*X  # self.predict(X)？ x又是什么鬼？
         w_gradient = np.sum(w_gradient, axis=0)
 
-        b_gradient = -(2/self.N)*(Y-self.W*X-self.b)  # 均方误差求导
+        b_gradient = -(2/self.N)*error  # 均方误差求导
         b_gradient = np.sum(b_gradient, axis=0)
 
         self.W = self.W - (self.learning_rate * w_gradient)
