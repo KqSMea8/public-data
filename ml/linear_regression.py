@@ -92,7 +92,7 @@ if __name__ == "__main__":
     print('x=6.6, y=', model.predict(6.6))
     draw_pic(x, y, w, b)
 
-    model
+    # model
 
     # draw_pic(x,y)
     # pass
