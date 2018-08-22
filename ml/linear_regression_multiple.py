@@ -100,7 +100,7 @@ class Linear_regression:
 
 
 if __name__ == "__main__":
-    w = [1, 3, 5]
+    w = [1, 3, 5] #最后一个为偏置项
     x, y = gen_train_data(w, 500)
     x = np.hstack([x, np.ones((x.shape[0], 1))])
 

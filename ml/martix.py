@@ -52,7 +52,7 @@ def gen_train_data_v2(w, row_number=5):
     # print(np.ones((train_X.shape[0], 1)))
     tmp_x = np.hstack([train_X, np.ones((train_X.shape[0], 1))])  # x 最后一列都是1
 
-    tmp_y = tmp_x @ W.T
+    tmp_y = tmp_x @ W.T #矩阵乘法 #转置
     # print(tmp_y)
     r = np.random.randn(*tmp_y.shape) * 0.33  # 加入数值抖动
     # print( r )
