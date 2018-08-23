@@ -10,8 +10,58 @@ import numpy as np
 基于numpy的各种矩阵操作
 https://blog.csdn.net/tintinetmilou/article/details/78587760 矩阵求导
 """
+#矩阵初始化
 
+def martix_plus():
+    """加法"""
+    m1 = np.array([[1,2,3],[4,5,6]]) 
+   
+    print("---矩阵+标量---")
+    # assert (m1 + 2)==(2+m1), "(m1 + 2)==(2+m1) not equal" #?
+    print(m1+2,2+m1) 
+     
+    print("---矩阵+向量， 列必须一致---")
+    v1 = np.array([1,2,3])
+    print(m1+v1,v1+m1) 
+    # print(m1+ np.array([1,2,3,4]) ) #error,列必须相同
+     
+    print("---矩阵+矩阵---") 
+    print(m1+np.array([[1,2,3]]))
+    print(m1+np.array([[1,2,3],[7,6,5]]))
+    print(np.array([[1,2,3],[7,6,5]]) + m1 )
+    # print(m1+np.array([[1,2,3],[7,6,5],[3,4,4]])) #ValueError: operands could not be broadcast together with shapes (2,3) (3,3)
+    # print(np.array([[1,2,3],[7,6,5],[3,4,4]]) + m1 ) #ValueError: operands could not be broadcast together with shapes (3,3) (2,3)
+     
 
+def martix_multiplication():
+    """矩阵乘法"""
+    m1 = np.array([[1,2,3],[4,5,6]]) 
+
+    print("---矩阵*标量---")  
+    print(m1*3)
+    print(3*m1) # 交换率,结合律
+    print(m1*0)
+
+    print("---矩阵*向量---") 
+    v1 = np.array([1,2,3])
+    print(m1 * v1) #点乘？
+    # print(v1.T)
+    print(m1 @ v1) 
+    # print(m1 @ v1.T) #m1@v1==m1@v1.T ?
+    # print(v1 @ m1) #交换率，error
+    # print(v1 @ m1.T) 
+    # print(m1*0)
+
+    print("---矩阵*矩阵---")  
+    # mn * na
+     
+
+     
+
+# 矩阵转置
+# 单位矩阵
+# 矩阵求逆
+# 公式求解最小值  
 
 def gen_train_data(w, b=0.3, row_number=5):
     W = np.array(w)
@@ -62,7 +112,9 @@ def gen_train_data_v2(w, row_number=5):
 
 
 if __name__ == "__main__":
+    # martix_plus()
+    martix_multiplication()
     # train_X,train_Y = gen_train_data([2,3,5,9],2,10)
-    train_X, train_Y = gen_train_data_v2([2, 3, 5, 9], 2)
+    # train_X, train_Y = gen_train_data_v2([2, 3, 5, 9], 2)
     # print("train_X" , train_X)
     # print("train_Y", train_Y)
