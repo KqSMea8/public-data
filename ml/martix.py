@@ -10,7 +10,17 @@ import numpy as np
 基于numpy的各种矩阵操作
 https://blog.csdn.net/tintinetmilou/article/details/78587760 矩阵求导
 """
-#矩阵初始化
+
+def martix_init():
+    """矩阵初始化"""
+    zeros = np.zeros(shape=(5,2))
+    print(zeros)
+    print(zeros.shape)
+
+    ones = np.ones(shape=(5,1)) 
+    print(ones)
+
+    print(np.hstack([zeros,ones])) #
 
 def martix_plus():
     """加法"""
@@ -54,14 +64,13 @@ def martix_multiplication():
 
     print("---矩阵*矩阵---")  
     # mn * na
-     
+    # 矩阵转置  
 
-     
+    # 单位矩阵
+    # 矩阵求逆
+    # 公式求解最小值  
 
-# 矩阵转置
-# 单位矩阵
-# 矩阵求逆
-# 公式求解最小值  
+
 
 def gen_train_data(w, b=0.3, row_number=5):
     W = np.array(w)
@@ -112,8 +121,9 @@ def gen_train_data_v2(w, row_number=5):
 
 
 if __name__ == "__main__":
+    martix_init()
     # martix_plus()
-    martix_multiplication()
+    # martix_multiplication()
     # train_X,train_Y = gen_train_data([2,3,5,9],2,10)
     # train_X, train_Y = gen_train_data_v2([2, 3, 5, 9], 2)
     # print("train_X" , train_X)
