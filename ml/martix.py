@@ -64,7 +64,19 @@ def martix_multiplication():
 
     print("---矩阵*矩阵---")  
     # mn * na
-    # 矩阵转置  
+    a = np.array([[1,2],[3,4]]) 
+    b = np.array([[11,12],[13,14]]) 
+    print(np.dot(a,b))
+    print(a@b) 
+    print(a*b) #点乘
+    
+    print("---矩阵转置---")  
+    # https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.ndarray.T.html
+    x = np.array([[1.,2.],[3.,4.]])
+    print(x.T)
+    print(x.transpose())
+    x = np.array([1.,2.,3.,4.])
+    print(x.T)
 
     # 单位矩阵
     # 矩阵求逆
@@ -121,9 +133,9 @@ def gen_train_data_v2(w, row_number=5):
 
 
 if __name__ == "__main__":
-    martix_init()
+    # martix_init()
     # martix_plus()
-    # martix_multiplication()
+    martix_multiplication()
     # train_X,train_Y = gen_train_data([2,3,5,9],2,10)
     # train_X, train_Y = gen_train_data_v2([2, 3, 5, 9], 2)
     # print("train_X" , train_X)
