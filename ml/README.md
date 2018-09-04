@@ -1,5 +1,6 @@
 # 机器学习基础
 不借住sklearn,tensorflow等框架，直接使用python实现各种原理
+https://github.com/jdwittenauer/ipython-notebooks
 
 ## 线性回归
 https://blog.csdn.net/sxf1061926959/article/details/66976356?locationNum=9&fps=1

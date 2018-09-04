@@ -64,7 +64,7 @@ function sample_4(){
 function sample_5(){
     # -epoch 25 -lr 1.0
     OUTPUT=output/model_cooking_5
-    fasttext supervised -input $DATA_ROOT/pre_cooking.train -output $OUTPUT -lr 1.0 -epoch 25
+    fasttext quantize -input $DATA_ROOT/pre_cooking.train -output $OUTPUT -lr 1.0 -epoch 25
     
     for(( i=1;i<6;i++ ))
     do
@@ -104,8 +104,8 @@ function sample_7(){
 # sample_2
 # sample_3
 # sample_4
-# sample_5
-sample_6
+sample_5
+# sample_6
 # sample_7
 
 

@@ -21,6 +21,8 @@ def generate_data():
     x2 = np.random.multivariate_normal(
         [1, 4], [[1, .75], [.75, 1]], num_observations)  
 
+    # 加入随机抖动？
+    
     simulated_separableish_features = np.vstack((x1, x2)).astype(np.float32)
     simulated_labels = np.hstack((np.zeros(num_observations),
                                   np.ones(num_observations)))
