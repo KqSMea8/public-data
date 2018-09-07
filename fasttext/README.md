@@ -7,6 +7,8 @@ http://fasttext.apachecn.org/cn/docs/v0.1.0/index.html
 
 https://github.com/facebookresearch/fastText/blob/master/python/doc/examples
 
+https://www.cnblogs.com/DjangoBlog/p/7903690.html
+
 ### 文本分类
 1. 文本预处理
     1. one-hot 向量

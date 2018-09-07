@@ -41,7 +41,4 @@ def pyfasttext_sample():
 
 if __name__ == "__main__":
     # fasttext_sample()
-    pyfasttext_sample()
-    
-     
-
+    pyfasttext_sample() 
