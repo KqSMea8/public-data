@@ -1,0 +1,85 @@
+一、数据加载
+1. torch.utils.data.Dataset 表示数据集的抽象类
+https://pytorch.org/docs/0.4.0/torchvision/datasets.html
+实现自定义数据集时，需重写这些类函数：
+__init__: 初始化方法
+__len__: 使得len(dataset)返回数据集的大小；
+__getitem__：使得支持dataset[i]能够返回第i个数据样本这样的下标操作。
+
+mnist等官方已实现的数据集源代码阅读
+https://pytorch.org/docs/0.4.0/_modules/torchvision/datasets/mnist.html#MNIST
+    os.path.expanduser(path)  #把path中包含的"~"和"~user"转换成用户目录
+    os.unlink 等价于remove(), 方法用于删除文件,如果文件是一个目录则返回一个错误
+
+    torch.load(file) ？
+    torch.save(training_set, f)  
+    torch.from_numpy(parsed).view(length).long()
+        .from_numpy(parsed)  #numpy转tensor
+        .view  #分列
+        .long  #tensor中的元素转为long型
+
+    PIL.Image.fromarray(img.numpy(), mode='L') #从numpy数组中加载图片信息
+
+    target_transform ?
+    gzip.GzipFile(file_path)
+    with open(file_path.replace('.gz', ''), 'wb') as out_f, gzip.GzipFile(file_path) as zip_f:
+        out_f.write(zip_f.read()) 
+
+    parsed = np.frombuffer(data, dtype=np.uint8, offset=8) #将bytearray转换为NumPy的结构数组
+    int(codecs.encode(b, 'hex'), 16)
+
+    
+    __repr__?
+
+自定义数据集?
+
+2. torch.utils.data.DataLoader
+https://pytorch.org/docs/0.4.0/data.html#torch.utils.data.DataLoader
+RandomSampler类表示随机采样且不重复，所以起到的就是shuffle的作用。
+参数：
+*. dataset (Dataset) – dataset from which to load the data.
+*. batch_size (int, optional) – how many samples per batch to load (default: 1).
+*. shuffle (bool, optional) – set to True to have the data reshuffled at every epoch (default: False).
+*. sampler (Sampler, optional) – defines the strategy to draw samples from the dataset. If specified, shuffle must be False.
+*. batch_sampler (Sampler, optional) – like sampler, but returns a batch of indices at a time. Mutually exclusive with batch_size, shuffle, sampler, and drop_last.
+*. num_workers (int, optional) – how many subprocesses to use for data loading. 0 means that the data will be loaded in the main process. (default: 0)
+*. collate_fn (callable, optional) – merges a list of samples to form a mini-batch.
+*. pin_memory (bool, optional) – If True, the data loader will copy tensors into CUDA pinned memory before returning them.
+*. drop_last (bool, optional) – set to True to drop the last incomplete batch, if the dataset size is not divisible by the batch size. If False and the size of dataset is not divisible by the batch size, then the last batch will be smaller. (default: False)
+*. timeout (numeric, optional) – if positive, the timeout value for collecting a batch from workers. Should always be non-negative. (default: 0)
+*. worker_init_fn (callable, optional) – If not None, this will be called on each worker subprocess with the worker id (an int in [0, num_workers - 1]) as input, after seeding and before data loading. (default: None)
+
+3. torchvision.transform
+https://pytorch-cn.readthedocs.io/zh/latest/torchvision/torchvision-transform/
+https://blog.csdn.net/u014380165/article/details/79167753
+data augmentation 数据增广，包括resize、crop等。
+sample code:
+    tfc = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize(
+            (0.1307,), (0.3081,))
+    ]) 
+
+Normalize类是做数据归一化的
+Resize类是对PIL Image做resize操作的
+CenterCrop是以输入图的中心点为中心点做指定size的crop操作，一般数据增强不会采用这个，因为当size固定的时候，在相同输入图像的情况下，N次CenterCrop的结果都是一样的。
+RandomCrop，crop时的中心点坐标是随机的
+RandomHorizontalFlip类也是比较常用的，是随机的图像水平翻转，图像的左右对调
+RandomVerticalFlip类是随机的图像竖直翻转，图像的上下对调。
+RandomResizedCrop，
+FiveCrop，从一张输入图像中crop出5张指定size的图像
+TenCrop，在FiveCrop的基础上，再将输入图像进行水平或竖直翻转，然后再进行FiveCrop操作，这样一张输入图像就能得到10张crop结果
+LinearTransformation，用一个变换矩阵去乘输入图像得到输出结果
+ColorJitter，亮度，对比度，饱和度和色度
+RandomRotation，随机旋转输入图像
+Grayscale，将输入图像转成灰度图
+RandomGrayscale，按照指定的概率进行转换
+
+其他阅读材料
+
+自定义数据读取
+https://blog.csdn.net/u014380165/article/details/78634829
+
+
+
+
