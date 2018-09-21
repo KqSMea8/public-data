@@ -26,13 +26,17 @@ class AlexNet(nn.Module):
             nn.Conv2d(3, 64, kernel_size=11, stride=4, padding=2),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=3, stride=2),
+
             nn.Conv2d(64, 192, kernel_size=5, padding=2),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=3, stride=2),
+
             nn.Conv2d(192, 384, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
+
             nn.Conv2d(384, 256, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
+
             nn.Conv2d(256, 256, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=3, stride=2),
@@ -59,8 +63,13 @@ def alexnet(pretrained=False, **kwargs):
     `"One weird trick..." <https://arxiv.org/abs/1404.5997>`_ paper.
     Args:
         pretrained (bool): If True, returns a model pre-trained on ImageNet
+        save to ~/.torch/models/alexnet-owt-4df8aa71.pth
     """
     model = AlexNet(**kwargs)
     if pretrained:
         model.load_state_dict(model_zoo.load_url(model_urls['alexnet']))
     return model
+
+if __name__ == '__main__':
+    model = alexnet()
+    print(model)

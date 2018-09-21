@@ -38,7 +38,8 @@ dropout,防止过拟合提高效果, 是指在深度学习网络的训练过程�
     LBFGS，？
 
 
-损失函数：torch.nn.functional.   
+损失函数：torch.nn.functional.  
+https://www.jiqizhixin.com/articles/091202 
 https://blog.csdn.net/zhangxb35/article/details/72464152
 https://zhuanlan.zhihu.com/p/32626442 
     l1_loss
@@ -225,3 +226,33 @@ pytorch 中国车牌识别？
 动画演示：
 http://imgtec.eetrend.com/blog/9715
 https://github.com/vdumoulin/conv_arithmetic
+
+
+
+mv ~/Downloads/resnet34-333f7ec4.pth ~/.torch/models/resnet34-333f7ec4.pth
+mv ~/Downloads/resnet50-19c8e357.pth ~/.torch/models/resnet50-19c8e357.pth
+mv ~/Downloads/resnet101-5d3b4d8f.pth ~/.torch/models/resnet101-5d3b4d8f.pth
+mv ~/Downloads/resnet152-b121ed2d.pth ~/.torch/models/resnet152-b121ed2d.pth
+
+mv ~/Downloads/squeezenet1_0-a815701f.pth ~/.torch/models/squeezenet1_0-a815701f.pth
+mv ~/Downloads/squeezenet1_1-f364aa15.pth ~/.torch/models/squeezenet1_1-f364aa15.pth
+
+mv ~/Downloads/vgg11-bbd30ac9.pth ~/.torch/models/vgg11-bbd30ac9.pth
+mv ~/Downloads/vgg11_bn-6002323d.pth ~/.torch/models/vgg11_bn-6002323d.pth
+mv ~/Downloads/vgg13_bn-abd245e5.pth ~/.torch/models/vgg13_bn-abd245e5.pth
+mv ~/Downloads/vgg13-c768596a.pth ~/.torch/models/vgg13-c768596a.pth
+mv ~/Downloads/vgg16_bn-6c64b313.pth ~/.torch/models/vgg16_bn-6c64b313.pth
+mv ~/Downloads/vgg16-397923af.pth ~/.torch/models/vgg16-397923af.pth
+mv ~/Downloads/vgg19_bn-c79401a0.pth ~/.torch/models/vgg19_bn-c79401a0.pth
+mv ~/Downloads/vgg19-dcbb9e9d.pth ~/.torch/models/vgg19-dcbb9e9d.pth
+
+
+mv ~/Downloads/densenet121-a639ec97.pth ~/.torch/models/densenet121-a639ec97.pth
+mv ~/Downloads/densenet161-8d451a50.pth ~/.torch/models/densenet161-8d451a50.pth
+mv ~/Downloads/densenet169-b2777c0a.pth ~/.torch/models/densenet169-b2777c0a.pth
+mv ~/Downloads/densenet201-c1103571.pth ~/.torch/models/densenet201-c1103571.pth
+
+mv ~/Downloads/densenet121-a639ec97.pth ~/.torch/models/densenet121-a639ec97.pth
+mv ~/Downloads/densenet121-a639ec97.pth ~/.torch/models/densenet121-a639ec97.pth
+
+mv ~/Downloads/inception_v3_google-1a9a5a14.pth ~/.torch/models/inception_v3_google-1a9a5a14.pth

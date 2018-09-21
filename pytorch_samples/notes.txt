@@ -10,6 +10,10 @@ mnist等官方已实现的数据集源代码阅读
 https://pytorch.org/docs/0.4.0/_modules/torchvision/datasets/mnist.html#MNIST
     os.path.expanduser(path)  #把path中包含的"~"和"~user"转换成用户目录
     os.unlink 等价于remove(), 方法用于删除文件,如果文件是一个目录则返回一个错误
+    shutil.rmtree(gzip_folder) #递归删除文件目录
+    except OSError as e， errno.EEXIST
+    rpartition
+
 
     torch.load(file) ？
     torch.save(training_set, f)  
@@ -27,6 +31,12 @@ https://pytorch.org/docs/0.4.0/_modules/torchvision/datasets/mnist.html#MNIST
 
     parsed = np.frombuffer(data, dtype=np.uint8, offset=8) #将bytearray转换为NumPy的结构数组
     int(codecs.encode(b, 'hex'), 16)
+
+    
+     with zipfile.ZipFile(file_path) as zip_f:
+            zip_f.extractall(raw_folder)
+
+    
 
     
     __repr__?
@@ -48,6 +58,7 @@ RandomSampler类表示随机采样且不重复，所以起到的就是shuffle的
 *. drop_last (bool, optional) – set to True to drop the last incomplete batch, if the dataset size is not divisible by the batch size. If False and the size of dataset is not divisible by the batch size, then the last batch will be smaller. (default: False)
 *. timeout (numeric, optional) – if positive, the timeout value for collecting a batch from workers. Should always be non-negative. (default: 0)
 *. worker_init_fn (callable, optional) – If not None, this will be called on each worker subprocess with the worker id (an int in [0, num_workers - 1]) as input, after seeding and before data loading. (default: None)
+
 
 3. torchvision.transform
 https://pytorch-cn.readthedocs.io/zh/latest/torchvision/torchvision-transform/

@@ -6,9 +6,10 @@ https://pytorch.org/docs/0.4.0/_modules/torchvision/datasets/mnist.html#MNIST
 """
 from __future__ import print_function
 import numpy as np 
+from PIL import Image
 import torch 
 import codecs
-from PIL import Image
+
 
 def get_int(b):
     return int(codecs.encode(b, 'hex'), 16) #
@@ -47,6 +48,8 @@ if __name__ == "__main__":
         print(i,v)
 
         img = Image.fromarray(v.numpy(), mode='L') #, 'RGB'
+        img.save("../data/img_"+str(i)+".jpg")
         img.show() 
+        
         
         if i>2:break 
