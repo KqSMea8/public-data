@@ -31,6 +31,7 @@ def model_eval(model, img_data):
     model_name = type(model).__name__
     model.eval()
     with torch.no_grad():
+        # img_data = img_data.to(device)
         output = model(img_data)
         pred = output.max(1, keepdim=True)[1]
         print("%s-pred:%s" % (model_name, pred[0]))
@@ -48,7 +49,7 @@ if __name__ == '__main__':
     model_eval(models.vgg11(pretrained=True), img_data)
     model_eval(models.resnet18(pretrained=True), img_data)
     model_eval(models.densenet161(pretrained=True), img_data)
-    model_eval(models.squeezenet1_0(pretrained=True), img_data)
+    model_eval(models.squeezenet1_1(pretrained=True), img_data)
 
     # UserWarning: nn.init.kaiming_normal is now deprecated in favor of nn.init.kaiming_normal_.
     # UserWarning: nn.init.kaiming_uniform is now deprecated in favor of nn.init.kaiming_uniform_.
@@ -57,7 +58,7 @@ if __name__ == '__main__':
     # error ?
     img_data = load_img_data(img_file, 299)  # GoogLeNet的输入图片大小为299*299
     model_eval(models.inception_v3(pretrained=True), img_data)
-    
+
     # RuntimeError: Given input size: (2048x5x5).
     # Calculated output size: (2048x0x0).
     # Output size is too small at /Users/soumith/miniconda2/conda-bld/pytorch_1532623076075/work/aten/src/THNN/generic/SpatialAveragePooling.c:64

@@ -45,7 +45,7 @@ def eval_single_img(img_file):
     print(data.shape)
 
     with torch.no_grad():  # 不加这个有什么影响？不加会计算图结构等，浪费内存资源
-        # data, target = data.to(device), target.to(device)
+        # data = data.to(device)
         output = model(data)  # 每个分类的预测得分
         # tensor([[ -74.3974,-68.3368,-41.4392,-51.1502,-68.1614,-81.0373,-116.1543,0.0000,-67.3520,-46.4981]])
         print("output:", output)
