@@ -78,13 +78,13 @@ class Net(nn.Module):
         # 1 input image channel, 10 output channels, 5x5 square convolution kernel
         self.conv1 = nn.Conv2d(1, 10, kernel_size=5)
         self.conv2 = nn.Conv2d(10, 20, kernel_size=5)
-        self.conv2_drop = nn.Dropout2d()
+        self.conv2_drop = nn.Dropout2d() #默认参数？p=0.5,inplace=False
         # 320 in_features, 50 out_features, in-out的映射关系是怎么搞的？
-        self.fc1 = nn.Linear(320, 50)  # an affine operation: y = Wx + b
+        self.fc1 = nn.Linear(320, 50)  #320, ?  an affine operation: y = Wx + b
         self.fc2 = nn.Linear(50, 10)
 
     def forward(self, x):
-        x = F.relu(F.max_pool2d(self.conv1(x), 2))
+        x = F.relu(F.max_pool2d(self.conv1(x), 2)) #卷积->池化->激活
         x = F.relu(F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))
         x = x.view(-1, 320)  # 将多行的Tensor拼接成一行，-1的意义是让库自行计算行数或列数
         x = F.relu(self.fc1(x))
@@ -94,7 +94,7 @@ class Net(nn.Module):
 
 
 def train(args, model, device, train_loader, optimizer, epoch):
-    model.train()  # ？
+    model.train()  #设置模型为训练模式
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
         # Clears the gradients of all optimized torch.Tensor s.
@@ -111,7 +111,7 @@ def train(args, model, device, train_loader, optimizer, epoch):
 
 
 def test(args, model, device, test_loader):
-    model.eval()  # ？
+    model.eval()   #设置模型为预测模式
     test_loss = 0
     correct = 0
     with torch.no_grad():

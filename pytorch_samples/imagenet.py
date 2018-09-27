@@ -2,6 +2,84 @@
 # -*- coding: utf-8 -*-
 """
 https://github.com/pytorch/examples/tree/e0d33a69bec3eb4096c265451dbb85975eb961ea/imagenet
+
+一、并行训练
+1.cpu,gpu,多server 
+
+分布式PyTorch:
+https://ptorch.com/docs/1/distributed
+MPI风格?
+
+通过多台机器和更大的小批量扩展网络训练
+
+dist.init_process_group
+torch.nn.parallel.DistributedDataParallel
+torch.utils.data.distributed.DistributedSampler 每个进程都可以将分布式采样器实例作为Data Loader采样器, 并且加载一个原始数据集的子集并独占该数据子集.
+
+train_sampler.set_epoch(epoch) #设置当前的 epoch，为了让不同的结点之间保持同步
+
+
+2.cpu or gpu相关
+model.features = torch.nn.DataParallel(model.features)
+model = torch.nn.DataParallel(model).cuda()
+
+https://ptorch.com/docs/3/parallelism_tutorial
+torch.nn.DataParallel #数据并行是当我们将小批量样品分成多个较小的批量批次，并且对每个较小的小批量并行运行计算。
+torch.nn.DataParallel.cuda()
+criterion = nn.CrossEntropyLoss().cuda()
+
+#https://blog.csdn.net/hyk_1996/article/details/80824747
+model.cuda() 无论是对于模型还是数据,cuda()函数都能实现从CPU到GPU的内存迁移
+
+target.cuda(async=True)  ? 一旦固定了张量或存储，就可以使用异步的GPU副本。只需传递一个额外的async=True参数到cuda()的调用。这可以用于将数据传输与计算重叠.
+
+什么情况下应该设置 cudnn.benchmark = True ？
+https://www.pytorchtutorial.com/when-should-we-set-cudnn-benchmark-to-true/
+设置这个 flag 可以让内置的 cuDNN 的 auto-tuner 自动寻找最适合当前配置的高效算法，来达到优化运行效率的问题。
+
+PyTorch0.4 已不推荐使用了
+
+二.保存&读取 checkpoint
+1.保存:
+	{
+    'epoch': epoch + 1,
+    'arch': args.arch,
+    'state_dict': model.state_dict(),
+    'best_prec1': best_prec1,
+    'optimizer' : optimizer.state_dict(),
+    }
+
+	torch.save(state, filename)
+	shutil.copyfile  shutil? 复制，若存在则覆盖 https://www.cnblogs.com/funsion/p/4017989.html
+2.加载：
+	checkpoint = torch.load(args.resume)
+	model.load_state_dict(checkpoint['state_dict'])
+	optimizer.load_state_dict(checkpoint['optimizer'])
+
+
+三. 数据处理
+normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                     std=[0.229, 0.224, 0.225])
+
+#训练数据的图片增广，验证测试时不需要这些
+transforms.RandomResizedCrop(224),
+transforms.RandomHorizontalFlip()
+
+torch.utils.data.DataLoader
+
+
+四. 优化器
+optimizer = torch.optim.SGD(model.parameters(), args.lr,
+                                momentum=args.momentum,
+                                weight_decay=args.weight_decay)
+#随着迭代次数增加，调小学习率
+for param_group in optimizer.param_groups:
+        param_group['lr'] = lr
+
+PyTorch0.4 不再推荐使用
+torch.autograd.Variable?
+torch.autograd.Variable(input, volatile=True)
+
 """
 import argparse
 import os
@@ -63,12 +141,11 @@ parser.add_argument('--dist-backend', default='gloo', type=str,
 
 best_prec1 = 0
 
-
 def main():
     global args, best_prec1
     args = parser.parse_args()
 
-    args.distributed = args.world_size > 1
+    args.distributed = args.world_size > 1 #分布式？
 
     if args.distributed:
         dist.init_process_group(backend=args.dist_backend, init_method=args.dist_url,
@@ -83,11 +160,12 @@ def main():
         model = models.__dict__[args.arch]()
 
     if not args.distributed:
+        #为啥alexnet，vgg跟其他的不一样？定义模型是它俩区分了features，classifier
         if args.arch.startswith('alexnet') or args.arch.startswith('vgg'):
             model.features = torch.nn.DataParallel(model.features)
             model.cuda()
         else:
-            model = torch.nn.DataParallel(model).cuda()
+            model = torch.nn.DataParallel(model).cuda() #要重新赋值的方式？
     else:
         model.cuda()
         model = torch.nn.parallel.DistributedDataParallel(model)
@@ -118,6 +196,8 @@ def main():
     # Data loading code
     traindir = os.path.join(args.data, 'train')
     valdir = os.path.join(args.data, 'val')
+
+    #这个mean,std的参数是从哪里来的？ 
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                      std=[0.229, 0.224, 0.225])
 
@@ -131,6 +211,7 @@ def main():
         ]))
 
     if args.distributed:
+        #每个进程都可以将分布式采样器实例作为Data Loader采样器, 并且加载一个原始数据集的子集并独占该数据子集.
         train_sampler = torch.utils.data.distributed.DistributedSampler(train_dataset)
     else:
         train_sampler = None
@@ -141,7 +222,7 @@ def main():
 
     val_loader = torch.utils.data.DataLoader(
         datasets.ImageFolder(valdir, transforms.Compose([
-            transforms.Resize(256),
+            transforms.Resize(256), #为啥train的时候没有这个 ？ 
             transforms.CenterCrop(224),
             transforms.ToTensor(),
             normalize,
@@ -155,6 +236,7 @@ def main():
 
     for epoch in range(args.start_epoch, args.epochs):
         if args.distributed:
+            #设置当前的 epoch，为了让不同的结点之间保持同步
             train_sampler.set_epoch(epoch)
         adjust_learning_rate(optimizer, epoch)
 
@@ -189,9 +271,9 @@ def train(train_loader, model, criterion, optimizer, epoch):
     end = time.time()
     for i, (input, target) in enumerate(train_loader):
         # measure data loading time
-        data_time.update(time.time() - end)
+        data_time.update(time.time() - end) #计算训练执行时间
 
-        target = target.cuda(async=True)
+        target = target.cuda(async=True) 
         input_var = torch.autograd.Variable(input)
         target_var = torch.autograd.Variable(target)
 
@@ -237,6 +319,8 @@ def validate(val_loader, model, criterion):
     end = time.time()
     for i, (input, target) in enumerate(val_loader):
         target = target.cuda(async=True)
+
+        #PyTorch0.4 已不推荐使用了
         input_var = torch.autograd.Variable(input, volatile=True)
         target_var = torch.autograd.Variable(target, volatile=True)
 

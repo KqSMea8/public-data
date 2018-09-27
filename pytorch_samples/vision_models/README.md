@@ -1,5 +1,13 @@
 pytorch官方模型
 ===
+1. LeNet
+2. AlexNet
+3. VGG
+4. Inception GoogLenet
+5. Resnet
+6. Densenet
+7. Squeezenet #移动
+
 官方wiki
 https://pytorch.org/docs/0.4.0/torchvision/models.html?highlight=torchvision%20models
 
@@ -14,6 +22,7 @@ PyTorch预训练：
 https://zhuanlan.zhihu.com/p/25980324 
 torchvision.models源码解读：
 https://blog.csdn.net/u014380165/article/details/79119664
+
 
 
 load_state_dict方法还有一个重要的参数是strict，该参数默认是True，表示预训练模型的层和你的网络结构层严格对应相等（比如层名和维度）。

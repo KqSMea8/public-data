@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 """
 https://github.com/pytorch/vision/blob/master/torchvision/models/vgg.py
+主要特点：
+1. 反复堆叠3x3的小型卷积核和2x2的最大池化层构建
+2. 卷积个数从64，128，256，512，后者是前者的2倍
 """
 import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
@@ -64,6 +67,7 @@ class VGG(nn.Module):
 
 
 def make_layers(cfg, batch_norm=False):
+    """反复堆叠3x3的小型卷积核和2x2的最大池化层构建"""
     layers = []
     in_channels = 3
     for v in cfg:
@@ -72,13 +76,14 @@ def make_layers(cfg, batch_norm=False):
         else:
             conv2d = nn.Conv2d(in_channels, v, kernel_size=3, padding=1)
             if batch_norm:
+                # BatchNorm2d ？
                 layers += [conv2d, nn.BatchNorm2d(v), nn.ReLU(inplace=True)]
             else:
                 layers += [conv2d, nn.ReLU(inplace=True)]
             in_channels = v
     return nn.Sequential(*layers)
 
-
+# 64*2 *2 *2 *2  
 cfg = {
     'A': [64, 'M', 128, 'M', 256, 256, 'M', 512, 512, 'M', 512, 512, 'M'],
     'B': [64, 64, 'M', 128, 128, 'M', 256, 256, 'M', 512, 512, 'M', 512, 512, 'M'],
