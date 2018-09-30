@@ -111,7 +111,7 @@ class SimpleCNN(nn.Module):
 
         print('x:', x.data.shape)  # [1, 20, 4, 4]
 
-        # 320是从哪里来的？ 4*4*20 宽*高*通道数
+        # 320是从哪里来的？ 20*4*4 宽*高*通道数
         x = x.view(-1, 320)  # 将多行的Tensor拼接成一行，-1的意义是让库自行计算行数或列数
 
         print('x:', x.data.shape)  # [1, 320]
@@ -127,7 +127,7 @@ class SimpleCNN(nn.Module):
 if __name__ == "__main__":
     model = SimpleCNN()
     print(model)
-    
+
     # https://github.com/sksq96/pytorch-summary
-    from torchsummary import summary
+    from torchsummary import summary #非pytorch官方包，需额外安装
     print(summary(model, (1, 28, 28)))

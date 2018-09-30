@@ -17,8 +17,14 @@ model = SimpleCNN()
 # 模型保存&加载的2种方式
 # 方案1，只存储模型的各种参数，推荐
 # torch.save(model.state_dict(), model_file) #如果是这种方式存储模型
-model.load_state_dict(torch.load(model_file))
+state_dict = torch.load(model_file)
+# print(state_dict)
+model.load_state_dict(state_dict)
 print("model:", model)
+
+# https://github.com/sksq96/pytorch-summary
+from torchsummary import summary #非pytorch官方包，需额外安装
+print(summary(model, (1, 28, 28)))
 
 # 方案2，不推荐
 # torch.save(model_file) #

@@ -13,6 +13,10 @@ kwargs={"num_classes":10} # 原本为1000类，改为10类
 # model = models.densenet161(pretrained=True,**kwargs)
 
 model = models.alexnet(pretrained=True)
+
+from torchsummary import summary #非pytorch官方包，需额外安装
+print(summary(model, (3, 224, 224)))
+
 for p in model.parameters():
     print(p.shape)
 

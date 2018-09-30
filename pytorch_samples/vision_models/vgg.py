@@ -5,6 +5,24 @@ https://github.com/pytorch/vision/blob/master/torchvision/models/vgg.py
 主要特点：
 1. 反复堆叠3x3的小型卷积核和2x2的最大池化层构建
 2. 卷积个数从64，128，256，512，后者是前者的2倍
+
+https://blog.csdn.net/qq_40027052/article/details/79015827
+卷积核专注于扩大通道数、池化专注于缩小宽和高
+无论大的卷积核还是小的，对参数量来说影响不大甚至持平。
+卷积的计算量增大
+多个小卷积核的堆叠比单一大卷积核带来了精度提升
+感受野，两个3x3的卷积堆叠获得的感受野大小，相当一个5x5的卷积；而3个3x3卷积的堆叠获取到的感受野相当于一个7x7的卷积
+更深更宽比矮胖的网络好
+卷积核尺寸奇数？
+池化的尺寸为偶数2
+max-pooling更容易捕捉图像上的变化，梯度的变化，带来更大的局部信息差异性，更好地描述边缘、纹理等构成语义的细节信息
+
+全连接转成卷积的方式 ？
+
+nn.init.kaiming_normal_
+nn.init.constant_
+nn.init.normal_
+
 """
 import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
