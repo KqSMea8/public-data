@@ -5,6 +5,10 @@ https://github.com/pytorch/vision/blob/master/torchvision/models/resnet.py
 
 代码解析：
 https://blog.csdn.net/u014380165/article/details/79119664
+
+不使用Dropout
+利用BN?和全局平均池化进行正则化
+
 """
 import torch.nn as nn
 import math
