@@ -4,10 +4,19 @@
 https://github.com/pytorch/vision/blob/master/torchvision/models/resnet.py
 
 代码解析：
+https://blog.csdn.net/jiangpeng59/article/details/79609392
 https://blog.csdn.net/u014380165/article/details/79119664
+
+resnet：
+https://blog.csdn.net/csdnldp/article/details/78313087
+https://www.jianshu.com/p/e502e4b43e6d
+https://blog.csdn.net/Jing_xian/article/details/78878966
+https://blog.csdn.net/jiangpeng59/article/details/79609392
 
 不使用Dropout
 利用BN?和全局平均池化进行正则化
+
+BatchNorm2d?
 
 """
 import torch.nn as nn
@@ -38,13 +47,23 @@ class BasicBlock(nn.Module):
     expansion = 1
 
     def __init__(self, inplanes, planes, stride=1, downsample=None):
+        """
+        inplanes: 
+        planes:
+        stride:
+        downsample: 
+        """
         super(BasicBlock, self).__init__()
         self.conv1 = conv3x3(inplanes, planes, stride)
+
+        # BatchNorm2d 
+        # https://blog.csdn.net/tmk_01/article/details/80679549
+        # 借鉴的做法，为增加对函数的直观认识，实际执行一下函数的输出结果
         self.bn1 = nn.BatchNorm2d(planes)
         self.relu = nn.ReLU(inplace=True)
         self.conv2 = conv3x3(planes, planes)
         self.bn2 = nn.BatchNorm2d(planes)
-        self.downsample = downsample
+        self.downsample = downsample 
         self.stride = stride
 
     def forward(self, x):
@@ -57,10 +76,11 @@ class BasicBlock(nn.Module):
         out = self.conv2(out)
         out = self.bn2(out)
 
+        #降采样？
         if self.downsample is not None:
             residual = self.downsample(x)
 
-        out += residual
+        out += residual #跳远连接
         out = self.relu(out)
 
         return out

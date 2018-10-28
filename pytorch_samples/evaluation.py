@@ -61,7 +61,7 @@ if __name__ == '__main__':
     model_list = ['resnet18'] #
     for model_name in model_list:
         model = models.__dict__[model_name](pretrained=True)
-        # print(summary(model, t))  # 输出网络结构
+        print(summary(model, t))  # 输出网络结构
         model_eval(model, img_data)  # 输出预测结果
 
     # img_data = load_img_data(img_file, 299)  # GoogLeNet的输入图片大小为299*299

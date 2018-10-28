@@ -128,6 +128,4 @@ if __name__ == "__main__":
     model = SimpleCNN()
     print(model)
 
-    # https://github.com/sksq96/pytorch-summary
-    from torchsummary import summary #非pytorch官方包，需额外安装
-    print(summary(model, (1, 28, 28)))
+    
