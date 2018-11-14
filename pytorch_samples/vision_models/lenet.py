@@ -4,8 +4,7 @@
 https://github.com/sloth2012/LeNet5/blob/master/LeNet.ipynb
 '''
 from torch import nn
-from torch.nn import functional as F
-from torch.autograd import Variable
+from torch.nn import functional as F 
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 from torchvision import datasets, transforms
@@ -107,10 +106,8 @@ def data_loader():
 def train(epoch):
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
-        if use_gpu:
-            # data, target = data.to(device), target.to(device)？
-            data, target = data.cuda(), target.cuda()
-        # data, target = Variable(data), Variable(target)
+        if use_gpu: 
+            data, target = data.cuda(), target.cuda() 
         optimizer.zero_grad()
         output = model(data)
         loss = criterion(output, target)
@@ -129,8 +126,7 @@ def test():
     with torch.no_grad():
         for data, target in test_loader:
             if use_gpu: 
-                data, target = data.cuda(), target.cuda()
-            # data, target = Variable(data), Variable(target)
+                data, target = data.cuda(), target.cuda() 
             output = model(data)
             test_loss += criterion(output, target).item()  # sum up batch loss
             # get the index of the max log-probability

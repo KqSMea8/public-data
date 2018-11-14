@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import torch
-from torch.autograd import Variable
 import torch.nn as nn
 import torch.nn.functional as F
 x = torch.Tensor(5, 3)  # 构造一个未初始化的5*3的矩阵

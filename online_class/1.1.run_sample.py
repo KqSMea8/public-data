@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 if __name__ == "__main__": #主程序
-    print("你好，世界！") 
+    print("hello,world") 
 
 
 # 1. print(), 系统函数，向屏幕上打印
