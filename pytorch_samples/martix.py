@@ -4,8 +4,6 @@ import torch
 from torch.autograd import Variable
 import torch.nn as nn
 import torch.nn.functional as F
-
-import torch
 x = torch.Tensor(5, 3)  # 构造一个未初始化的5*3的矩阵
 x = torch.rand(5, 3)  # 构造一个随机初始化的矩阵
 print(x)
