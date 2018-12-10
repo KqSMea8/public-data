@@ -1,0 +1,16 @@
+--2018-11-30 11:05:53--  http://ftrace.baidu.com/zpFullNewInfo?nid=10496860713960756607
+Resolving ftrace.baidu.com... 10.141.80.247, 10.202.7.163
+Connecting to ftrace.baidu.com|10.141.80.247|:80... connected.
+HTTP request sent, awaiting response... 302 
+Location: https://uuap.baidu.com/login?service=http%3A%2F%2Fftrace.baidu.com%2FzpFullNewInfo%3Fnid%3D10496860713960756607 [following]
+--2018-11-30 11:05:53--  https://uuap.baidu.com/login?service=http%3A%2F%2Fftrace.baidu.com%2FzpFullNewInfo%3Fnid%3D10496860713960756607
+Resolving uuap.baidu.com... 10.14.172.124
+Connecting to uuap.baidu.com|10.14.172.124|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘zpFullNewInfo?nid=10496860713960756607’
+
+zpFullNewInfo?nid=10496860713960756607           [<=>                                                                                           ]       0  --.-KB/s               zpFullNewInfo?nid=10496860713960756607           [ <=>                                                                                          ]  10.46K  --.-KB/s    in 0.001s  
+
+2018-11-30 11:05:53 (17.0 MB/s) - ‘zpFullNewInfo?nid=10496860713960756607’ saved [10716]
+
